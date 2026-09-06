@@ -1,19 +1,26 @@
-# FTL WAR v0.2
+# FTL WAR v0.3
 
-GitHub Pages üzerinde çalışan statik PvP strateji oyunu prototipi.
+FTL WAR'ın GitHub Pages üzerinde çalışan üçüncü prototip sürümü.
 
-## v0.2 özellikleri
-- Kayıt ol / giriş yap ekranı
-- 5 kavim: Romalılar, Cermenler, Türkler, Vikingler, Galyalılar
-- Oyuncu adı, şifre ve köy adı
-- Verileri tarayıcı LocalStorage içinde saklama
-- Merkez köy için 18 kaynak alanı
-- Kaynak alanlarını seviye 30'a kadar yükseltme
-- Dinamik kaynak üretimi
-- Köy Merkezi / Harita / Ordu / Raporlar / Mesajlar hazırlık ekranları
-- Genel sunucu hızı: x10.000.000
+## Yeni v0.3 özellikleri
+- v0.2 tarayıcı hesabı ve kaynak alanları korunur
+- Grafiksel Köy Merkezi ekranı
+- 21 bina alanı
+- Yeni bina kurma
+- Mevcut binayı seviye yükseltme
+- İnşaat maliyetleri
+- x10.000.000 sunucu hızına göre hızlandırılmış inşaat süreleri
+- Tekli inşaat kuyruğu ve ilerleme göstergesi
+- Ana Bina, Toplanma Yeri, Depo, Tahıl Ambarı, Kışla, Ahır, Akademi, Pazar, Elçilik, Demirci, Belediye Binası ve Sur
+- Yeni tarayıcılar için basit hesap oluşturma ekranı
+- Kaynak alanları ve dinamik üretim sistemi devam ediyor
+- Merkez köy kaynak alanı üst sınırı: 30
+- Genel oyun hızı: x10.000.000
 - Dünya Harikası: 1x
 
-## Önemli
-Bu sürüm gerçek çok oyunculu backend içermez. Kayıtlar yalnızca kullanılan tarayıcıda saklanır.
-Gerçek oyuncular arası PvP için sonraki aşamada backend ve veritabanı gerekir.
+## Not
+Bu sürüm hâlâ statik prototiptir. Hesaplar LocalStorage'da tutulur.
+Gerçek çok oyunculu PvP, harita, saldırılar, ittifak, mesajlaşma, MultiHunter ve ödeme/altın sistemi için backend + veritabanı gerekecektir.
+
+## GitHub Pages güncelleme
+Repository'deki `index.html` ve `README.md` dosyalarını bu pakettekilerle değiştir ve `main` branch'e commit et.
