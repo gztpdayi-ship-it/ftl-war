@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FTL WAR v0.6</title>
+<title>FTL WAR v0.7</title>
 <style>
 :root{
   --bg:#0b110c;--panel:#211e19;--panel2:#2b271f;--line:#67512c;--gold:#f1bd4e;--gold2:#a87328;
@@ -154,7 +154,7 @@ button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
 
 <div id="authGate" class="modal hidden">
   <div class="modalbox" style="max-width:760px">
-    <div class="heading"><h2>FTL WAR v0.6</h2><span class="badge">Yeni Komutan</span></div>
+    <div class="heading"><h2>FTL WAR v0.7</h2><span class="badge">Yeni Komutan</span></div>
     <div class="notice">Eski v0.4 hesabın varsa aynı tarayıcıda korunur.</div>
     <div class="cards" style="grid-template-columns:1fr 1fr">
       <div class="card"><h4>Oyuncu adı</h4><input id="newName" style="width:100%;padding:10px;background:#111510;color:#fff;border:1px solid #5f523d;border-radius:5px"></div>
@@ -187,29 +187,29 @@ const BUILDINGS=[
 const SLOT_POS=[[50,49],[50,27],[50,70],[29,48],[70,48],[34,28],[66,28],[34,68],[66,68],[18,35],[82,35],[18,61],[82,61],[50,88],[50,12],[10,48],[90,48],[25,82],[75,82],[25,16],[75,16]];
 const UNIT_DATA={
  "Romalılar":[
-  {id:"legionary",name:"Lejyoner",icon:"🛡",atk:40,def:35,speed:6,cost:{wood:1200,clay:1000,iron:1500,crop:500},baseTrain:8},
-  {id:"imperian",name:"İmperyan",icon:"⚔",atk:70,def:40,speed:7,cost:{wood:2000,clay:1700,iron:2400,crop:800},baseTrain:10},
-  {id:"equites",name:"Equites",icon:"🐎",atk:120,def:65,speed:14,cost:{wood:3500,clay:2800,iron:4200,crop:1600},baseTrain:14}
+  {id:"legionary",name:"Lejyoner",icon:"🛡",atk:40,def:35,speed:6,cost:{wood:1200,clay:1000,iron:1500,crop:500},baseTrain1x:100},
+  {id:"imperian",name:"İmperyan",icon:"⚔",atk:70,def:40,speed:7,cost:{wood:2000,clay:1700,iron:2400,crop:800},baseTrain1x:140},
+  {id:"equites",name:"Equites",icon:"🐎",atk:120,def:65,speed:14,cost:{wood:3500,clay:2800,iron:4200,crop:1600},baseTrain1x:220}
  ],
  "Cermenler":[
-  {id:"club",name:"Tokmakçı",icon:"🪓",atk:45,def:20,speed:7,cost:{wood:1000,clay:800,iron:700,crop:400},baseTrain:7},
-  {id:"axe",name:"Balta Savaşçısı",icon:"⚒",atk:75,def:35,speed:6,cost:{wood:1800,clay:1300,iron:1900,crop:700},baseTrain:9},
-  {id:"teuton",name:"Cermen Şövalyesi",icon:"🐴",atk:140,def:70,speed:12,cost:{wood:3800,clay:3000,iron:4300,crop:1700},baseTrain:12}
+  {id:"club",name:"Tokmakçı",icon:"🪓",atk:45,def:20,speed:7,cost:{wood:1000,clay:800,iron:700,crop:400},baseTrain1x:90},
+  {id:"axe",name:"Balta Savaşçısı",icon:"⚒",atk:75,def:35,speed:6,cost:{wood:1800,clay:1300,iron:1900,crop:700},baseTrain1x:125},
+  {id:"teuton",name:"Cermen Şövalyesi",icon:"🐴",atk:140,def:70,speed:12,cost:{wood:3800,clay:3000,iron:4300,crop:1700},baseTrain1x:180}
  ],
  "Türkler":[
-  {id:"akinci",name:"Akıncı",icon:"🏹",atk:55,def:25,speed:9,cost:{wood:1200,clay:900,iron:1100,crop:500},baseTrain:7},
-  {id:"alp",name:"Alp",icon:"🗡",atk:85,def:55,speed:7,cost:{wood:1900,clay:1500,iron:2200,crop:800},baseTrain:9},
-  {id:"sipahi",name:"Sipahi",icon:"🐎",atk:145,def:75,speed:15,cost:{wood:3600,clay:3000,iron:4500,crop:1800},baseTrain:12}
+  {id:"akinci",name:"Akıncı",icon:"🏹",atk:55,def:25,speed:9,cost:{wood:1200,clay:900,iron:1100,crop:500},baseTrain1x:95},
+  {id:"alp",name:"Alp",icon:"🗡",atk:85,def:55,speed:7,cost:{wood:1900,clay:1500,iron:2200,crop:800},baseTrain1x:130},
+  {id:"sipahi",name:"Sipahi",icon:"🐎",atk:145,def:75,speed:15,cost:{wood:3600,clay:3000,iron:4500,crop:1800},baseTrain1x:175}
  ],
  "Vikingler":[
-  {id:"raider",name:"Yağmacı",icon:"🪓",atk:60,def:25,speed:8,cost:{wood:1300,clay:900,iron:1000,crop:500},baseTrain:7},
-  {id:"huscarl",name:"Huscarl",icon:"🛡",atk:80,def:65,speed:6,cost:{wood:2000,clay:1600,iron:2300,crop:900},baseTrain:9},
-  {id:"berserker",name:"Berserker",icon:"⚔",atk:155,def:50,speed:11,cost:{wood:4000,clay:2800,iron:4700,crop:1700},baseTrain:12}
+  {id:"raider",name:"Yağmacı",icon:"🪓",atk:60,def:25,speed:8,cost:{wood:1300,clay:900,iron:1000,crop:500},baseTrain1x:95},
+  {id:"huscarl",name:"Huscarl",icon:"🛡",atk:80,def:65,speed:6,cost:{wood:2000,clay:1600,iron:2300,crop:900},baseTrain1x:135},
+  {id:"berserker",name:"Berserker",icon:"⚔",atk:155,def:50,speed:11,cost:{wood:4000,clay:2800,iron:4700,crop:1700},baseTrain1x:180}
  ],
  "Galyalılar":[
-  {id:"phalanx",name:"Falanks",icon:"🛡",atk:35,def:55,speed:7,cost:{wood:1100,clay:1400,iron:900,crop:500},baseTrain:7},
-  {id:"swordsman",name:"Kılıçlı",icon:"⚔",atk:75,def:45,speed:7,cost:{wood:1800,clay:1500,iron:2100,crop:700},baseTrain:9},
-  {id:"haeduan",name:"Haeduan",icon:"🐎",atk:130,def:90,speed:13,cost:{wood:3600,clay:3400,iron:4100,crop:1800},baseTrain:12}
+  {id:"phalanx",name:"Falanks",icon:"🛡",atk:35,def:55,speed:7,cost:{wood:1100,clay:1400,iron:900,crop:500},baseTrain1x:100},
+  {id:"swordsman",name:"Kılıçlı",icon:"⚔",atk:75,def:45,speed:7,cost:{wood:1800,clay:1500,iron:2100,crop:700},baseTrain1x:125},
+  {id:"haeduan",name:"Haeduan",icon:"🐎",atk:130,def:90,speed:13,cost:{wood:3600,clay:3400,iron:4100,crop:1800},baseTrain1x:190}
  ]};
 const fieldTypes=["wood","clay","iron","crop","wood","clay","iron","crop","wood","clay","iron","crop","wood","clay","iron","crop","crop","crop"];
 const labels={wood:"Odun",clay:"Kil",iron:"Demir",crop:"Tahıl"},icons={wood:"🌲",clay:"🧱",iron:"⛓",crop:"🌾"};
@@ -233,6 +233,11 @@ function migrate(){
    }
  } else currentUser.trainQueue=[];
  currentUser.reports=currentUser.reports||[];currentUser.coord=currentUser.coord||randomCoord();currentUser.movements=currentUser.movements||[];currentUser.enemyArmies=currentUser.enemyArmies||{};
+ if(currentUser.trainQueue.length){
+   const q=currentUser.trainQueue[0],u=UNIT_DATA[currentUser.tribe].find(x=>x.id===q.id);
+   if(u && q.speedVersion!==7){q.unitSeconds=unitTrainSeconds(u);q.lastProcessedAt=Date.now();q.speedVersion=7;delete q.nextReady}
+ }
+ if(currentUser.enemyArmyVersion!==7){currentUser.enemyArmies={};currentUser.enemyArmyVersion=7}
  saveUser()
 }
 function createFreshUser(){
@@ -255,16 +260,31 @@ function openBuild(slot){const existing=currentUser.buildings[slot],cont=documen
 function closeBuild(){document.getElementById("buildModal").classList.add("hidden")}
 function queueBuild(slot,id){if(currentUser.buildQueue.length){alert("Aynı anda 1 inşaat yapılabilir.");return}const ex=currentUser.buildings[slot],d=buildingDef(id),lvl=ex?ex.level+1:1,c=calcCost(d,lvl);for(const r of ["wood","clay","iron","crop"])if(currentUser.resources[r]<c[r]){alert("Yeterli kaynak yok.");return}for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]-=c[r];const sec=buildTime(d,lvl),now=Date.now();currentUser.buildQueue.push({slot,id,level:lvl,start:now,end:now+sec*1000});saveUser();closeBuild();updateTop();renderBuildQueue()}
 function renderBuildQueue(){const b=document.getElementById("queueBox");if(!currentUser.buildQueue.length){b.textContent="Kuyruk boş.";return}const q=currentUser.buildQueue[0],d=buildingDef(q.id),now=Date.now(),left=Math.max(0,q.end-now),pct=Math.min(100,(now-q.start)/(q.end-q.start)*100);b.innerHTML=`<div class="queue-item"><div><b>${d.icon} ${d.name}</b> • Seviye ${q.level}<div class="progress"><div class="bar" style="width:${pct}%"></div></div></div><div>${Math.ceil(left/1000)} sn</div></div>`;if(left<=0){const q2=currentUser.buildQueue.shift(),ex=currentUser.buildings[q2.slot];if(ex)ex.level=q2.level;else currentUser.buildings[q2.slot]={id:q2.id,level:q2.level};saveUser();renderVillage();renderArmy()}}
+function trainingBuildingInfo(u){
+ const idx=UNIT_DATA[currentUser.tribe].findIndex(x=>x.id===u.id);
+ const buildingId=idx===2?"stable":"barracks";
+ return {buildingId,level:Math.max(1,buildingLevel(buildingId)),name:idx===2?"Ahır":"Kışla"};
+}
+function levelTrainingFactor(level){
+ // Kullanıcının verdiği Tokmakçı örneğini temel alır:
+ // L1 = %100 süre, L20 = %50 süre. Ara seviyeler yumuşak/geometrik azalır.
+ const lvl=Math.min(20,Math.max(1,level));
+ return Math.pow(0.5,(lvl-1)/19);
+}
 function unitTrainSeconds(u){
- const stableNeeded=(UNIT_DATA[currentUser.tribe].findIndex(x=>x.id===u.id)===2);
- const lvl=Math.max(1,buildingLevel(stableNeeded?"stable":"barracks"));
- const buildingFactor=Math.pow(0.88,lvl-1);
- return Math.max(0.25, u.baseTrain*buildingFactor); // each unit individually
+ const info=trainingBuildingInfo(u);
+ const normal1x=(u.baseTrain1x||90)*levelTrainingFactor(info.level);
+ return normal1x/SPEED;
+}
+function formatTinySeconds(sec){
+ if(sec>=1)return sec.toFixed(2)+" sn";
+ if(sec>=0.001)return (sec*1000).toFixed(3)+" ms";
+ return (sec*1000000).toFixed(2)+" µs";
 }
 function renderArmy(){
  const units=UNIT_DATA[currentUser.tribe];document.getElementById("armySummary").innerHTML=units.map(u=>`<div class="army-box"><small>${u.icon} ${u.name}</small><strong>${fmt(currentUser.army[u.id]||0)}</strong></div>`).join("");
- document.getElementById("armyNotice").textContent=hasBuilding("barracks")?"Kışla hazır. Birlikler artık TEK TEK tamamlanır. Kışla/Ahır seviyesi yükseldikçe tek birlik süresi azalır.":"Asker eğitmek için önce Kışla kurmalısın.";
- document.getElementById("unitCards").innerHTML=units.map((u,idx)=>{const needStable=idx===2,enabled=hasBuilding(needStable?"stable":"barracks"),sec=unitTrainSeconds(u);return `<div class="card"><div class="unit-card"><div class="unit-icon">${u.icon}</div><div><h3>${u.name}</h3><p>Saldırı ${u.atk} • Savunma ${u.def} • Hız ${u.speed}</p></div></div><p>Maliyet / birlik: 🌲 ${fmt(u.cost.wood)} • 🧱 ${fmt(u.cost.clay)} • ⛓ ${fmt(u.cost.iron)} • 🌾 ${fmt(u.cost.crop)}</p><p>1 birlik süresi: <b>${sec.toFixed(2)} sn</b></p><div class="input-row"><input id="qty_${u.id}" type="number" min="1" value="100"><button class="btn ${enabled?"":"dark"}" ${enabled?"":"disabled"} onclick="trainUnits('${u.id}')">Eğit</button></div></div>`}).join("");renderTrainQueue()
+ document.getElementById("armyNotice").innerHTML=hasBuilding("barracks")?`Kışla hazır. Eğitim süreleri <b>x10.000.000</b> sunucu hızına göre hesaplanıyor. Çok yüksek hız nedeniyle tarayıcı her mikro saniyede ekran çizmek yerine geçen sürede tamamlanan birlikleri matematiksel olarak orduya ekler.`:"Asker eğitmek için önce Kışla kurmalısın.";
+ document.getElementById("unitCards").innerHTML=units.map((u,idx)=>{const needStable=idx===2,enabled=hasBuilding(needStable?"stable":"barracks"),info=trainingBuildingInfo(u),sec=unitTrainSeconds(u),rate=1/sec,normal=(u.baseTrain1x||90)*levelTrainingFactor(info.level);return `<div class="card"><div class="unit-card"><div class="unit-icon">${u.icon}</div><div><h3>${u.name}</h3><p>Saldırı ${u.atk} • Savunma ${u.def} • Hız ${u.speed}</p></div></div><p>Maliyet / birlik: 🌲 ${fmt(u.cost.wood)} • 🧱 ${fmt(u.cost.clay)} • ⛓ ${fmt(u.cost.iron)} • 🌾 ${fmt(u.cost.crop)}</p><p>${info.name} Seviye ${info.level} • 1x süre: <b>${normal.toFixed(2)} sn</b></p><p>x10.000.000 süre: <b>${formatTinySeconds(sec)}</b> • yaklaşık <b>${fmt(rate)}</b> birlik/sn</p><div class="input-row"><input id="qty_${u.id}" type="number" min="1" value="100000"><button class="btn ${enabled?"":"dark"}" ${enabled?"":"disabled"} onclick="trainUnits('${u.id}')">Eğit</button></div></div>`}).join("");renderTrainQueue()
 }
 function trainUnits(id){
  const u=UNIT_DATA[currentUser.tribe].find(x=>x.id===id),qty=Math.max(1,parseInt(document.getElementById("qty_"+id).value||1)),idx=UNIT_DATA[currentUser.tribe].findIndex(x=>x.id===id);
@@ -273,27 +293,31 @@ function trainUnits(id){
  for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]-=total[r];
  const sec=unitTrainSeconds(u),now=Date.now();
  if(currentUser.trainQueue.length && currentUser.trainQueue[0].id===id){currentUser.trainQueue[0].remaining+=qty}
- else if(currentUser.trainQueue.length){alert("v0.5'te aynı eğitim kuyruğunda önce mevcut birlik tipi bitmelidir.");for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]+=total[r];return}
- else currentUser.trainQueue=[{id,remaining:qty,completed:0,nextReady:now+sec*1000,startedAt:now,unitSeconds:sec}];
+ else if(currentUser.trainQueue.length){alert("Mevcut eğitim kuyruğundaki birlik tipi tamamlanmadan başka birlik tipi eklenemez.");for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]+=total[r];return}
+ else currentUser.trainQueue=[{id,remaining:qty,completed:0,startedAt:now,lastProcessedAt:now,unitSeconds:sec,speedVersion:7}];
  saveUser();updateTop();renderTrainQueue()
 }
 function processTraining(){
  if(!currentUser.trainQueue.length)return;
  const q=currentUser.trainQueue[0],u=UNIT_DATA[currentUser.tribe].find(x=>x.id===q.id),sec=q.unitSeconds||unitTrainSeconds(u),now=Date.now();
- if(q.nextReady==null)q.nextReady=now+sec*1000;
- if(now>=q.nextReady){
-   const elapsedUnits=Math.floor((now-q.nextReady)/(sec*1000))+1;
-   const done=Math.min(q.remaining,elapsedUnits);
+ if(!q.lastProcessedAt)q.lastProcessedAt=now;
+ const elapsedMs=Math.max(0,now-q.lastProcessedAt);
+ const unitMs=sec*1000;
+ if(unitMs<=0)return;
+ const done=Math.min(q.remaining,Math.floor(elapsedMs/unitMs));
+ if(done>0){
    currentUser.army[q.id]=(currentUser.army[q.id]||0)+done;
-   q.remaining-=done;q.completed=(q.completed||0)+done;q.nextReady+=done*sec*1000;
+   q.remaining-=done;q.completed=(q.completed||0)+done;
+   q.lastProcessedAt+=done*unitMs;
    if(q.remaining<=0)currentUser.trainQueue.shift();
    saveUser()
  }
 }
 function renderTrainQueue(){
  const b=document.getElementById("trainQueueBox");if(!currentUser.trainQueue.length){b.textContent="Kuyruk boş.";return}
- const q=currentUser.trainQueue[0],u=UNIT_DATA[currentUser.tribe].find(x=>x.id===q.id),now=Date.now(),sec=q.unitSeconds||unitTrainSeconds(u),left=Math.max(0,q.nextReady-now),pct=Math.min(100,Math.max(0,(sec*1000-left)/(sec*1000)*100));
- b.innerHTML=`<div class="queue-item"><div><b>${u.icon} ${u.name}</b> • Kalan: <b>${fmt(q.remaining)}</b> • Tamamlanan: ${fmt(q.completed||0)}<div class="progress"><div class="bar" style="width:${pct}%"></div></div><small>Her birlik tek tek orduya eklenir.</small></div><div>Sonraki birlik: ${(left/1000).toFixed(2)} sn</div></div>`
+ const q=currentUser.trainQueue[0],u=UNIT_DATA[currentUser.tribe].find(x=>x.id===q.id),sec=q.unitSeconds||unitTrainSeconds(u),now=Date.now();
+ const elapsed=Math.max(0,(now-(q.lastProcessedAt||now))/1000),fraction=Math.min(1,elapsed/sec),eta=q.remaining*sec;
+ b.innerHTML=`<div class="queue-item"><div><b>${u.icon} ${u.name}</b> • Kalan: <b>${fmt(q.remaining)}</b> • Tamamlanan: ${fmt(q.completed||0)}<div class="progress"><div class="bar" style="width:${fraction*100}%"></div></div><small>x10.000.000 hızında geçen zamana göre tamamlanan askerler toplu hesaplanır; oyun mantığında her birlik sırayla tamamlanır.</small></div><div>1 birlik: ${formatTinySeconds(sec)}<br>Tahmini kalan: ${eta<1?(eta*1000).toFixed(2)+" ms":eta.toFixed(2)+" sn"}</div></div>`
 }
 function enemies(){return[
  {name:"KaraKurt",village:"Kuzey Kalesi",x:-8,y:5,power:650},{name:"Mızrak",village:"Demirhisar",x:6,y:-4,power:900},{name:"RomaX",village:"Kartal Yuvası",x:12,y:7,power:1200},{name:"Valkyr",village:"Fırtına",x:-13,y:-8,power:1600},{name:"Gallia",village:"Yeşil Vadi",x:3,y:11,power:800},{name:"Barbar",village:"Kızıl Tepe",x:-3,y:-12,power:1100},
@@ -301,7 +325,7 @@ function enemies(){return[
 ]}
 function renderMap(){const m=document.getElementById("worldMap");m.innerHTML="";for(let y=4;y>=-4;y--)for(let x=-4;x<=4;x++){const wx=currentUser.coord.x+x*3,wy=currentUser.coord.y+y*3;let enemy=enemies().find(e=>Math.abs(e.x-wx)<=1&&Math.abs(e.y-wy)<=1),cl="tile",html=`<div>🌲</div><div class="coord">${wx}|${wy}</div><div>Boş</div>`,click=null;if(x===0&&y===0){cl="tile me";html=`<div>🏰</div><div class="coord">${currentUser.coord.x}|${currentUser.coord.y}</div><div>${currentUser.village}</div>`}else if(enemy){cl="tile enemy";html=`<div>🏯</div><div class="coord">${enemy.x}|${enemy.y}</div><div>${enemy.village}</div>`;click=()=>openAttack(enemy)}else if((Math.abs(wx+wy)%7)===0){cl="tile oasis";html=`<div>💧</div><div class="coord">${wx}|${wy}</div><div>Vaha</div>`}const d=document.createElement("button");d.className=cl;d.innerHTML=html;if(click)d.onclick=click;m.appendChild(d)}}
 function updateAttackMode(){document.getElementById("attackModeLabel").textContent="Seçili: "+({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[attackMode])}
-function openAttack(enemy){selectedTarget=enemy;attackMode="attack";updateAttackMode();document.getElementById("targetInfo").innerHTML=`Hedef: <b>${enemy.village}</b> • Oyuncu: ${enemy.name} • Koordinat: ${enemy.x}|${enemy.y} • Tahmini savunma: ${fmt(enemy.power)}`;document.getElementById("attackUnits").innerHTML=UNIT_DATA[currentUser.tribe].map(u=>`<div class="card" style="margin-bottom:8px"><div class="input-row"><div style="flex:1"><b>${u.icon} ${u.name}</b><br><small>Mevcut: ${fmt(currentUser.army[u.id]||0)}</small></div><input id="atk_${u.id}" type="number" min="0" max="${currentUser.army[u.id]||0}" value="0"></div></div>`).join("");document.getElementById("attackError").textContent="";document.getElementById("attackModal").classList.remove("hidden")}
+function openAttack(enemy){selectedTarget=enemy;attackMode="attack";updateAttackMode();const ea=getEnemyArmy(enemy),dp=enemyDefensePower(ea);document.getElementById("targetInfo").innerHTML=`Hedef: <b>${enemy.village}</b> • Oyuncu: ${enemy.name} • Koordinat: ${enemy.x}|${enemy.y}<br>Tahmini savunma gücü: <b>${fmt(dp)}</b> • Muhafız: ${fmt(ea.guard)} • Mızraklı: ${fmt(ea.spear)} • Süvari: ${fmt(ea.rider)}`;document.getElementById("attackUnits").innerHTML=UNIT_DATA[currentUser.tribe].map(u=>`<div class="card" style="margin-bottom:8px"><div class="input-row"><div style="flex:1"><b>${u.icon} ${u.name}</b><br><small>Mevcut: ${fmt(currentUser.army[u.id]||0)}</small></div><input id="atk_${u.id}" type="number" min="0" max="${currentUser.army[u.id]||0}" value="0"></div></div>`).join("");document.getElementById("attackError").textContent="";document.getElementById("attackModal").classList.remove("hidden")}
 function closeAttack(){document.getElementById("attackModal").classList.add("hidden")}
 function distance(a,b){return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2)}
 function sendAttack(){
@@ -313,21 +337,32 @@ function sendAttack(){
  const now=Date.now();currentUser.movements.push({id:"mv_"+now,type:attackMode,phase:"outgoing",target:selectedTarget,units:sent,totalAtk,start:now,arrival:now+travel*1000,returnAt:null,travel});
  saveUser();closeAttack();renderArmy();renderMovements();alert(`${({attack:"Saldırı",raid:"Yağma",support:"Destek"}[attackMode])} yola çıktı. Varış: ${travel} sn`)
 }
+const ENEMY_UNIT_DATA={guard:{name:"Muhafız",def:35},spear:{name:"Mızraklı",def:55},rider:{name:"Süvari",def:90}};
 function getEnemyArmy(target){
- const key=target.x+"|"+target.y;if(!currentUser.enemyArmies[key]){const p=Math.max(1,target.power);currentUser.enemyArmies[key]={guard:Math.max(1,Math.floor(p/35)),spear:Math.max(1,Math.floor(p/55)),rider:Math.max(1,Math.floor(p/90))}}return currentUser.enemyArmies[key]
+ const key=target.x+"|"+target.y;
+ if(!currentUser.enemyArmies[key]){
+   const p=Math.max(1,target.power);
+   currentUser.enemyArmies[key]={
+     guard:Math.max(1,Math.floor((p*.40)/ENEMY_UNIT_DATA.guard.def)),
+     spear:Math.max(1,Math.floor((p*.35)/ENEMY_UNIT_DATA.spear.def)),
+     rider:Math.max(1,Math.floor((p*.25)/ENEMY_UNIT_DATA.rider.def))
+   };
+ }
+ return currentUser.enemyArmies[key]
 }
 function enemyTotal(a){return (a.guard||0)+(a.spear||0)+(a.rider||0)}
+function enemyDefensePower(a){return Math.floor((a.guard||0)*35+(a.spear||0)*55+(a.rider||0)*90)}
 function splitLoot(total){const weights=[.30,.27,.23,.20],vals=weights.map(w=>Math.floor(total*w));vals[3]+=total-vals.reduce((a,b)=>a+b,0);return {wood:vals[0],clay:vals[1],iron:vals[2],crop:vals[3]}}
 function resolveMovements(){
  const now=Date.now();for(const m of currentUser.movements){
    if(m.phase==="outgoing" && now>=m.arrival){
      if(m.type==="support"){m.phase="returning";m.returnAt=now+m.travel*1000;m.result="Destek ulaştı";continue}
-     const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,enemy=getEnemyArmy(m.target),defStart={...enemy},defCount=enemyTotal(defStart),win=atk>=m.target.power,lossRate=win?(m.type==="raid"?0.10:0.18):0.65;
+     const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,enemy=getEnemyArmy(m.target),defStart={...enemy},defCount=enemyTotal(defStart),defPower=enemyDefensePower(defStart),win=atk>=defPower,lossRate=win?(m.type==="raid"?0.10:0.18):0.65;
      m.returningUnits={};const attackerLosses={};for(const u of UNIT_DATA[currentUser.tribe]){const sent=m.units[u.id]||0;const survived=Math.max(0,Math.floor(sent*(1-lossRate)));m.returningUnits[u.id]=survived;attackerLosses[u.id]=sent-survived}
      const defLossRate=win?(m.type==="raid"?.72:.90):.22,defRemain={};for(const id of ["guard","spear","rider"]){defRemain[id]=Math.max(0,Math.floor((defStart[id]||0)*(1-defLossRate)));enemy[id]=defRemain[id]}
-     const lootTotal=win?Math.floor(m.target.power*(m.type==="raid"?1200:900)):0;m.loot=splitLoot(lootTotal);m.lootTotal=lootTotal;m.result=win?"Zafer":"Yenilgi";
+     const lootTotal=win?Math.floor(Math.max(1,defPower)*(m.type==="raid"?1200:900)):0;m.loot=splitLoot(lootTotal);m.lootTotal=lootTotal;m.result=win?"Zafer":"Yenilgi";
      m.phase="returning";m.returnAt=now+m.travel*1000;
-     currentUser.reports.unshift({time:new Date().toISOString(),mode:m.type,target:m.target,result:m.result,attack:Math.floor(atk),defense:m.target.power,loot:m.loot,lootTotal,sent:{...m.units},returned:{...m.returningUnits},attackerLosses,defenderStart:defStart,defenderReturned:defRemain})
+     currentUser.reports.unshift({time:new Date().toISOString(),mode:m.type,target:m.target,result:m.result,attack:Math.floor(atk),defense:defPower,loot:m.loot,lootTotal,sent:{...m.units},returned:{...m.returningUnits},attackerLosses,defenderStart:defStart,defenderReturned:defRemain})
    }else if(m.phase==="returning" && now>=m.returnAt){
      const units=m.returningUnits||m.units;for(const id in units)currentUser.army[id]=(currentUser.army[id]||0)+units[id];
      if(m.loot){if(typeof m.loot==="number"){currentUser.resources.wood+=m.loot;currentUser.resources.clay+=m.loot;currentUser.resources.iron+=m.loot;currentUser.resources.crop+=Math.floor(m.loot*.7)}else{for(const t of ["wood","clay","iron","crop"])currentUser.resources[t]+=m.loot[t]||0}}
