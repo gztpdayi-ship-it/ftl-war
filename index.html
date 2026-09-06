@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FTL WAR — x10.000.000 PvP</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#182018;color:#eee}
+.top{background:linear-gradient(#4a3928,#241b14);border-bottom:3px solid #9b7b45;padding:10px 18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-size:25px;font-weight:900;color:#e8bd5a;text-shadow:2px 2px #111}.speed{background:#8e1e18;padding:8px 12px;border-radius:6px;font-weight:bold}
+.res{display:flex;gap:8px;flex:1;justify-content:center;flex-wrap:wrap}.res span{background:#30251b;border:1px solid #80633a;padding:7px 10px;border-radius:5px}.res b{color:#f4d47a}
+main{max-width:1200px;margin:20px auto;padding:0 14px}.hero{background:linear-gradient(135deg,#263827,#111);border:1px solid #705b37;border-radius:10px;padding:28px;text-align:center;box-shadow:0 8px 25px #0008}
+h1{margin:0 0 8px;color:#e6bd64;font-size:42px}.sub{color:#cfc7b7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}.card{background:#29251f;border:1px solid #695638;border-radius:8px;padding:18px}.card h3{margin-top:0;color:#e5bd6b}.btn{display:inline-block;padding:10px 16px;border:0;border-radius:5px;background:#a9782d;color:white;font-weight:bold;cursor:pointer}.btn:hover{background:#c18d3b}
+.factions{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}.faction{padding:14px 8px;text-align:center;background:#201d19;border:1px solid #554631;border-radius:7px}.faction strong{display:block;margin-bottom:5px}
+@media(max-width:700px){.factions{grid-template-columns:repeat(2,1fr)}h1{font-size:32px}}
+footer{text-align:center;padding:30px;color:#aaa}
+</style>
+</head>
+<body>
+<header class="top">
+<div class="logo">⚔ FTL WAR</div>
+<div class="speed">⚡ x10.000.000</div>
+<div class="res">
+<span>🌲 <b id="wood">1000000000</b></span>
+<span>🧱 <b id="clay">1000000000</b></span>
+<span>⛓️ <b id="iron">1000000000</b></span>
+<span>🌾 <b id="crop">1000000000</b></span>
+<span>🪙 <b>500</b></span>
+</div>
+</header>
+<main>
+<section class="hero">
+<h1>FTL WAR</h1>
+<div class="sub">Ultra hızlı PvP strateji oyunu • Dünya Harikası hariç tüm sistemler x10.000.000</div>
+<p><button class="btn" onclick="startGame()">Oyuna Başla</button></p>
+</section>
+<section class="grid">
+<div class="card"><h3>🏘️ Köy</h3><p>Merkez köy kaynak alanları maksimum <b>30</b>. Diğer köyler maksimum <b>20</b>.</p></div>
+<div class="card"><h3>⚔️ Ordu</h3><p>Romalılar, Cermenler, Türkler, Vikingler ve Galyalılar.</p></div>
+<div class="card"><h3>🗺️ Dünya</h3><p>Harita, saldırılar, fetihler, ittifaklar ve gerçek zamanlı PvP.</p></div>
+<div class="card"><h3>🛡️ MultiHunter</h3><p>Yetkili paneli ile oyunculara telafi altını, kaynak, asker ve ödül gönderme.</p></div>
+</section>
+<section class="factions">
+<div class="faction">🇮🇹<strong>Romalılar</strong>Seç</div>
+<div class="faction">⚔️<strong>Cermenler</strong>Seç</div>
+<div class="faction">🇹🇷<strong>Türkler</strong>Seç</div>
+<div class="faction">🛡️<strong>Vikingler</strong>Seç</div>
+<div class="faction">🏹<strong>Galyalılar</strong>Seç</div>
+</section>
+</main>
+<footer>FTL WAR • Prototype v0.1 • Dünya Harikası: 1x</footer>
+<script>
+function startGame(){alert("FTL WAR prototipi hazır. Bir sonraki aşama: gerçek kayıt/giriş ve oyun sunucusu.");}
+</script>
+</body>
+</html>
