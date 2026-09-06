@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FTL WAR v0.5</title>
+<title>FTL WAR v0.6</title>
 <style>
 :root{
   --bg:#0b110c;--panel:#211e19;--panel2:#2b271f;--line:#67512c;--gold:#f1bd4e;--gold2:#a87328;
@@ -16,7 +16,7 @@ button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
 .resources{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.res{min-width:120px;background:#292218;border:1px solid #69522b;border-radius:6px;padding:8px 10px;text-align:center;color:#ffd36a;font-weight:800}
 .wrap{max-width:1280px;margin:auto;padding:16px}.nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
 .btn{border:0;border-radius:6px;padding:9px 13px;font-weight:800;color:#fff;background:linear-gradient(#bd8532,#956324);box-shadow:0 2px 0 #654217}.btn.dark{background:#302c26;border:1px solid #645641;box-shadow:none}.btn.red{background:#b72621;box-shadow:none}.btn.green{background:#347e51;box-shadow:none}.btn:disabled{opacity:.5;cursor:not-allowed}
-.layout{display:grid;grid-template-columns:260px 1fr;gap:14px}.side,.main{background:rgba(31,29,24,.97);border:1px solid #58472e;border-radius:10px;box-shadow:var(--shadow)}.side{padding:14px}.main{padding:15px;min-height:680px}
+.layout{display:grid;grid-template-columns:260px 1fr 220px;gap:14px}.side,.main{background:rgba(31,29,24,.97);border:1px solid #58472e;border-radius:10px;box-shadow:var(--shadow)}.side{padding:14px}.main{padding:15px;min-height:680px}
 .player{background:#171713;border:1px solid #514129;border-radius:8px;padding:13px;margin-bottom:12px;line-height:1.45}.player b{color:var(--gold)}
 .side button{width:100%;padding:10px;margin:4px 0;text-align:left;background:#2a261f;color:#eee;border:1px solid #54462f;border-radius:6px}.side button:hover,.side button.active{border-color:var(--gold);color:var(--gold)}
 .heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.heading h2{margin:0;color:var(--gold)}.badge{font-size:12px;background:#3b301d;border:1px solid #7a6238;color:#ffd675;padding:6px 10px;border-radius:999px}
@@ -33,10 +33,10 @@ button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
 .army-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}.army-box{background:#171713;border:1px solid #4f422f;border-radius:8px;padding:11px}.army-box small{display:block;color:#aaa}.army-box strong{font-size:19px;color:#f0be4b}
 .map{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;background:#161b13;border:1px solid #4f5132;border-radius:12px;padding:12px}.tile{aspect-ratio:1/1;border-radius:9px;background:linear-gradient(145deg,#304126,#1c2819);border:1px solid #455535;color:#ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;font-size:11px}.tile.enemy{background:linear-gradient(145deg,#49251f,#281511);border-color:#744036}.tile.me{background:linear-gradient(145deg,#5b4c23,#302713);border-color:#997a35}.tile.oasis{background:linear-gradient(145deg,#25444b,#13272b);border-color:#3f6570}.tile:hover{border-color:var(--gold)}.coord{color:#d9c18a;font-weight:800}
 .report{background:#191713;border:1px solid #4c402e;border-radius:8px;padding:12px;margin:9px 0}.report h4{margin:0 0 6px;color:#f0bd50}.report small{color:#aaa}.good{color:#7fd696}.bad{color:#ff8e85}
-.movement{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#231f19;border:1px solid #51422e;border-radius:8px;padding:10px;margin:8px 0}
+.rightbar{background:rgba(31,29,24,.97);border:1px solid #58472e;border-radius:10px;box-shadow:var(--shadow);padding:12px;height:max-content;position:sticky;top:70px}.rightbar h3{margin:0 0 10px;color:var(--gold)}.prod-mini{background:#171713;border:1px solid #50432f;border-radius:7px;padding:9px;margin:7px 0}.prod-mini small{display:block;color:#aaa}.prod-mini strong{color:#f1c14e;font-size:16px}.battle-table{width:100%;border-collapse:collapse;margin:10px 0}.battle-table th,.battle-table td{padding:7px;border-bottom:1px solid #403726;text-align:right}.battle-table th:first-child,.battle-table td:first-child{text-align:left}.loot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:9px}.loot-box{background:#242018;border:1px solid #51432f;border-radius:6px;padding:8px;text-align:center}.loot-box strong{display:block;color:#f1c14e}.movement{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#231f19;border:1px solid #51422e;border-radius:8px;padding:10px;margin:8px 0}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.76);display:flex;align-items:center;justify-content:center;padding:18px;z-index:90}.modalbox{width:min(900px,96vw);max-height:88vh;overflow:auto;background:#201d18;border:1px solid #775b30;border-radius:12px;padding:20px;box-shadow:var(--shadow)}
-@media(max-width:950px){.layout{grid-template-columns:1fr}.side{display:none}.fields{grid-template-columns:repeat(4,1fr)}.resources{display:none}.cards{grid-template-columns:repeat(2,1fr)}.map{grid-template-columns:repeat(5,1fr)}}
-@media(max-width:650px){.fields{grid-template-columns:repeat(3,1fr)}.stats,.army-summary,.cards{grid-template-columns:1fr}.map{grid-template-columns:repeat(3,1fr)}.slot{width:96px;height:78px}.village-scene{min-height:680px}}
+@media(max-width:1100px){.layout{grid-template-columns:220px 1fr}.rightbar{grid-column:1/-1;position:static;display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.rightbar h3{grid-column:1/-1}}@media(max-width:950px){.layout{grid-template-columns:1fr}.side{display:none}.rightbar{grid-template-columns:repeat(4,1fr)}.fields{grid-template-columns:repeat(4,1fr)}.resources{display:none}.cards{grid-template-columns:repeat(2,1fr)}.map{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:650px){.rightbar{grid-template-columns:repeat(2,1fr)}.loot-grid{grid-template-columns:repeat(2,1fr)}.fields{grid-template-columns:repeat(3,1fr)}.stats,.army-summary,.cards{grid-template-columns:1fr}.map{grid-template-columns:repeat(3,1fr)}.slot{width:96px;height:78px}.village-scene{min-height:680px}}
 </style>
 </head>
 <body>
@@ -121,6 +121,13 @@ button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
         <div class="notice">Gerçek oyuncular arası mesajlaşma backend aşamasında eklenecek.</div>
       </section>
     </main>
+    <aside class="rightbar">
+      <h3>📈 Saatlik Üretim</h3>
+      <div class="prod-mini"><small>🌲 Odun / saat</small><strong id="woodProdRight">0</strong></div>
+      <div class="prod-mini"><small>🧱 Kil / saat</small><strong id="clayProdRight">0</strong></div>
+      <div class="prod-mini"><small>⛓ Demir / saat</small><strong id="ironProdRight">0</strong></div>
+      <div class="prod-mini"><small>🌾 Tahıl / saat</small><strong id="cropProdRight">0</strong></div>
+    </aside>
   </div>
 </div>
 
@@ -147,7 +154,7 @@ button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
 
 <div id="authGate" class="modal hidden">
   <div class="modalbox" style="max-width:760px">
-    <div class="heading"><h2>FTL WAR v0.5</h2><span class="badge">Yeni Komutan</span></div>
+    <div class="heading"><h2>FTL WAR v0.6</h2><span class="badge">Yeni Komutan</span></div>
     <div class="notice">Eski v0.4 hesabın varsa aynı tarayıcıda korunur.</div>
     <div class="cards" style="grid-template-columns:1fr 1fr">
       <div class="card"><h4>Oyuncu adı</h4><input id="newName" style="width:100%;padding:10px;background:#111510;color:#fff;border:1px solid #5f523d;border-radius:5px"></div>
@@ -225,7 +232,7 @@ function migrate(){
       currentUser.trainQueue=[{id:old.id,remaining:old.qty,completed:0,nextReady:Date.now(),startedAt:Date.now()}];
    }
  } else currentUser.trainQueue=[];
- currentUser.reports=currentUser.reports||[];currentUser.coord=currentUser.coord||randomCoord();currentUser.movements=currentUser.movements||[];
+ currentUser.reports=currentUser.reports||[];currentUser.coord=currentUser.coord||randomCoord();currentUser.movements=currentUser.movements||[];currentUser.enemyArmies=currentUser.enemyArmies||{};
  saveUser()
 }
 function createFreshUser(){
@@ -237,7 +244,7 @@ function createFreshUser(){
 function logout(){localStorage.removeItem("ftlwar_last_user");location.reload()}
 function production(type){return currentUser.fields.filter(f=>f.type===type).reduce((s,f)=>s+f.level*f.level*10000000,0)}
 function updateTop(){["wood","clay","iron","crop","gold"].forEach(r=>document.getElementById(r+"Top").textContent=fmt(currentUser.resources[r]||0))}
-function renderFields(){const g=document.getElementById("fieldsGrid");g.innerHTML="";currentUser.fields.forEach((f,i)=>{const d=document.createElement("div");d.className="field "+f.type;d.innerHTML=`<div class="icon">${icons[f.type]}</div><div class="name">${labels[f.type]}</div><strong>Seviye ${f.level}</strong><button onclick="upgradeField(${i})">${f.level>=30?"MAX":"Yükselt"}</button>`;g.appendChild(d)});["wood","clay","iron","crop"].forEach(t=>document.getElementById(t+"Prod").textContent=fmt(production(t)))}
+function renderFields(){const g=document.getElementById("fieldsGrid");g.innerHTML="";currentUser.fields.forEach((f,i)=>{const d=document.createElement("div");d.className="field "+f.type;d.innerHTML=`<div class="icon">${icons[f.type]}</div><div class="name">${labels[f.type]}</div><strong>Seviye ${f.level}</strong><button onclick="upgradeField(${i})">${f.level>=30?"MAX":"Yükselt"}</button>`;g.appendChild(d)});["wood","clay","iron","crop"].forEach(t=>{document.getElementById(t+"Prod").textContent=fmt(production(t));const r=document.getElementById(t+"ProdRight");if(r)r.textContent=fmt(production(t))})}
 function upgradeField(i){const f=currentUser.fields[i];if(f.level>=30)return;const c=Math.max(1000,Math.floor(2500000*Math.pow(1.7,f.level-1)));if(["wood","clay","iron"].some(r=>currentUser.resources[r]<c)||currentUser.resources.crop<c*.6){alert("Yeterli kaynak yok.");return}currentUser.resources.wood-=c;currentUser.resources.clay-=c;currentUser.resources.iron-=c;currentUser.resources.crop-=Math.floor(c*.6);f.level++;saveUser();updateTop();renderFields()}
 function buildingDef(id){return BUILDINGS.find(b=>b.id===id)} function hasBuilding(id){return currentUser.buildings.some(b=>b&&b.id===id)}
 function buildingLevel(id){const b=currentUser.buildings.find(b=>b&&b.id===id);return b?b.level:0}
@@ -306,27 +313,37 @@ function sendAttack(){
  const now=Date.now();currentUser.movements.push({id:"mv_"+now,type:attackMode,phase:"outgoing",target:selectedTarget,units:sent,totalAtk,start:now,arrival:now+travel*1000,returnAt:null,travel});
  saveUser();closeAttack();renderArmy();renderMovements();alert(`${({attack:"Saldırı",raid:"Yağma",support:"Destek"}[attackMode])} yola çıktı. Varış: ${travel} sn`)
 }
+function getEnemyArmy(target){
+ const key=target.x+"|"+target.y;if(!currentUser.enemyArmies[key]){const p=Math.max(1,target.power);currentUser.enemyArmies[key]={guard:Math.max(1,Math.floor(p/35)),spear:Math.max(1,Math.floor(p/55)),rider:Math.max(1,Math.floor(p/90))}}return currentUser.enemyArmies[key]
+}
+function enemyTotal(a){return (a.guard||0)+(a.spear||0)+(a.rider||0)}
+function splitLoot(total){const weights=[.30,.27,.23,.20],vals=weights.map(w=>Math.floor(total*w));vals[3]+=total-vals.reduce((a,b)=>a+b,0);return {wood:vals[0],clay:vals[1],iron:vals[2],crop:vals[3]}}
 function resolveMovements(){
  const now=Date.now();for(const m of currentUser.movements){
    if(m.phase==="outgoing" && now>=m.arrival){
      if(m.type==="support"){m.phase="returning";m.returnAt=now+m.travel*1000;m.result="Destek ulaştı";continue}
-     const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,win=atk>=m.target.power,lossRate=win?(m.type==="raid"?0.10:0.18):0.65;
-     m.returningUnits={};for(const u of UNIT_DATA[currentUser.tribe]){const sent=m.units[u.id]||0;m.returningUnits[u.id]=Math.max(0,Math.floor(sent*(1-lossRate)))}
-     m.loot=win?Math.floor(m.target.power*(m.type==="raid"?1200:900)):0;m.result=win?"Zafer":"Yenilgi";
+     const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,enemy=getEnemyArmy(m.target),defStart={...enemy},defCount=enemyTotal(defStart),win=atk>=m.target.power,lossRate=win?(m.type==="raid"?0.10:0.18):0.65;
+     m.returningUnits={};const attackerLosses={};for(const u of UNIT_DATA[currentUser.tribe]){const sent=m.units[u.id]||0;const survived=Math.max(0,Math.floor(sent*(1-lossRate)));m.returningUnits[u.id]=survived;attackerLosses[u.id]=sent-survived}
+     const defLossRate=win?(m.type==="raid"?.72:.90):.22,defRemain={};for(const id of ["guard","spear","rider"]){defRemain[id]=Math.max(0,Math.floor((defStart[id]||0)*(1-defLossRate)));enemy[id]=defRemain[id]}
+     const lootTotal=win?Math.floor(m.target.power*(m.type==="raid"?1200:900)):0;m.loot=splitLoot(lootTotal);m.lootTotal=lootTotal;m.result=win?"Zafer":"Yenilgi";
      m.phase="returning";m.returnAt=now+m.travel*1000;
-     currentUser.reports.unshift({time:new Date().toISOString(),mode:m.type,target:m.target,result:m.result,attack:Math.floor(atk),defense:m.target.power,loot:m.loot,sent:m.units,returned:m.returningUnits})
+     currentUser.reports.unshift({time:new Date().toISOString(),mode:m.type,target:m.target,result:m.result,attack:Math.floor(atk),defense:m.target.power,loot:m.loot,lootTotal,sent:{...m.units},returned:{...m.returningUnits},attackerLosses,defenderStart:defStart,defenderReturned:defRemain})
    }else if(m.phase==="returning" && now>=m.returnAt){
      const units=m.returningUnits||m.units;for(const id in units)currentUser.army[id]=(currentUser.army[id]||0)+units[id];
-     if(m.loot){currentUser.resources.wood+=m.loot;currentUser.resources.clay+=m.loot;currentUser.resources.iron+=m.loot;currentUser.resources.crop+=Math.floor(m.loot*.7)}
+     if(m.loot){if(typeof m.loot==="number"){currentUser.resources.wood+=m.loot;currentUser.resources.clay+=m.loot;currentUser.resources.iron+=m.loot;currentUser.resources.crop+=Math.floor(m.loot*.7)}else{for(const t of ["wood","clay","iron","crop"])currentUser.resources[t]+=m.loot[t]||0}}
      m.phase="done"
    }
  }
  currentUser.movements=currentUser.movements.filter(m=>m.phase!=="done");saveUser()
 }
 function renderMovements(){const l=document.getElementById("movementList");document.getElementById("movementBadge").textContent=currentUser.movements.length+" hareket";if(!currentUser.movements.length){l.innerHTML='<div class="notice">Aktif birlik hareketi yok.</div>';return}const now=Date.now();l.innerHTML=currentUser.movements.map(m=>{const end=m.phase==="outgoing"?m.arrival:m.returnAt,left=Math.max(0,Math.ceil((end-now)/1000));return `<div class="movement"><div><b>${m.phase==="outgoing"?"➡️":"⬅️"} ${m.target.village}</b><br><small>${({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[m.type])} • ${m.phase==="outgoing"?"Gidiyor":"Dönüyor"}</small></div><div>${left} sn</div></div>`}).join("")}
-function renderReports(){const l=document.getElementById("reportList");document.getElementById("reportBadge").textContent=currentUser.reports.length+" rapor";if(!currentUser.reports.length){l.innerHTML='<div class="notice">Henüz savaş raporu yok.</div>';return}l.innerHTML=currentUser.reports.map(r=>`<div class="report"><h4 class="${r.result==="Zafer"?"good":"bad"}">${r.result==="Zafer"?"🏆":"☠"} ${r.result} • ${r.target.village}</h4><small>${new Date(r.time).toLocaleString("tr-TR")} • ${({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[r.mode]||"Saldırı")}</small><p>Saldırı gücü: ${fmt(r.attack)} • Savunma gücü: ${fmt(r.defense)}</p><p>Ganimet: ${fmt(r.loot)}</p></div>`).join("")}
+function renderReports(){
+ const l=document.getElementById("reportList");document.getElementById("reportBadge").textContent=currentUser.reports.length+" rapor";if(!currentUser.reports.length){l.innerHTML='<div class="notice">Henüz savaş raporu yok.</div>';return}
+ const names={guard:"Muhafız",spear:"Mızraklı",rider:"Süvari"};
+ l.innerHTML=currentUser.reports.map(r=>{const loot=typeof r.loot==="object"?r.loot:{wood:r.loot||0,clay:r.loot||0,iron:r.loot||0,crop:Math.floor((r.loot||0)*.7)};const total=r.lootTotal??Object.values(loot).reduce((a,b)=>a+(b||0),0);const units=UNIT_DATA[currentUser.tribe];const attRows=units.filter(u=>(r.sent?.[u.id]||0)>0).map(u=>{const sent=r.sent?.[u.id]||0,surv=r.returned?.[u.id]??sent,lost=r.attackerLosses?.[u.id]??Math.max(0,sent-surv);return `<tr><td>${u.icon} ${u.name}</td><td>${fmt(sent)}</td><td class="bad">${fmt(lost)}</td><td class="good">${fmt(surv)}</td></tr>`}).join("");const ds=r.defenderStart||{},dr=r.defenderReturned||{};const defRows=Object.keys(ds).map(id=>{const start=ds[id]||0,surv=dr[id]??start;return `<tr><td>🛡 ${names[id]||id}</td><td>${fmt(start)}</td><td class="bad">${fmt(Math.max(0,start-surv))}</td><td class="good">${fmt(surv)}</td></tr>`}).join("");return `<div class="report"><h4 class="${r.result==="Zafer"?"good":"bad"}">${r.result==="Zafer"?"🏆":"☠"} ${r.result} • ${r.target.village}</h4><small>${new Date(r.time).toLocaleString("tr-TR")} • ${({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[r.mode]||"Saldırı")}</small><p>Saldırı gücü: ${fmt(r.attack)} • Savunma gücü: ${fmt(r.defense)}</p><h4>⚔ Saldıran — Biz</h4><table class="battle-table"><tr><th>Birlik</th><th>Katılan</th><th>Kayıp</th><th>Kalan</th></tr>${attRows||'<tr><td colspan="4">Eski raporda birlik detayı yok.</td></tr>'}</table><h4>🛡 Savunan — Rakip</h4><table class="battle-table"><tr><th>Birlik</th><th>Başlangıç</th><th>Kayıp</th><th>Kalan</th></tr>${defRows||'<tr><td colspan="4">Eski raporda savunma birlik detayı yok.</td></tr>'}</table><h4>🎒 Ganimet</h4><div class="loot-grid"><div class="loot-box">🌲 Odun<strong>${fmt(loot.wood)}</strong></div><div class="loot-box">🧱 Kil<strong>${fmt(loot.clay)}</strong></div><div class="loot-box">⛓ Demir<strong>${fmt(loot.iron)}</strong></div><div class="loot-box">🌾 Tahıl<strong>${fmt(loot.crop)}</strong></div></div><p><b>Toplam Ganimet: ${fmt(total)}</b></p></div>`}).join("")
+}
 function showPanel(name){const m={fields:"panelFields",center:"panelCenter",army:"panelArmy",map:"panelMap",movements:"panelMovements",reports:"panelReports",messages:"panelMessages"};Object.values(m).forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById(m[name]).classList.remove("hidden");if(name==="army")renderArmy();if(name==="map")renderMap();if(name==="movements")renderMovements();if(name==="reports")renderReports();if(name==="center")renderVillage()}
-function tick(){if(!currentUser)return;["wood","clay","iron","crop"].forEach(t=>currentUser.resources[t]+=production(t)/3600);processTraining();resolveMovements();renderBuildQueue();renderTrainQueue();renderMovements();updateTop();saveUser()}
+function tick(){if(!currentUser)return;["wood","clay","iron","crop"].forEach(t=>currentUser.resources[t]+=production(t)/3600);processTraining();resolveMovements();["wood","clay","iron","crop"].forEach(t=>{const r=document.getElementById(t+"ProdRight");if(r)r.textContent=fmt(production(t))});renderBuildQueue();renderTrainQueue();renderMovements();updateTop();saveUser()}
 if(loadUser()){document.getElementById("playerName").textContent=currentUser.name;document.getElementById("playerTribe").textContent=currentUser.tribe;document.getElementById("villageName").textContent=currentUser.village;document.getElementById("playerCoord").textContent=currentUser.coord.x+"|"+currentUser.coord.y;document.getElementById("armyBadge").textContent=currentUser.tribe;updateTop();renderFields();renderVillage();renderArmy();renderMap();renderReports();renderMovements();showPanel("army");setInterval(tick,250)}
 </script>
 </body>

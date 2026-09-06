@@ -1,32 +1,17 @@
-# FTL WAR v0.5
+# FTL WAR v0.6
 
-FTL WAR tarayıcı tabanlı PvP strateji oyununun beşinci prototip sürümü.
+FTL WAR tarayıcı tabanlı PvP strateji oyununun altıncı prototip sürümü.
 
-## v0.5 önemli düzeltme
-- Askerler artık toplam eğitim süresi sonunda topluca verilmez.
-- Her birlik kendi süresi dolduğunda TEK TEK orduya eklenir.
-- Örn. 100.000 Cermen Şövalyesi bastığında kuyrukta kalan sayı azalır ve askerler sırayla tamamlanır.
-- Sayfa kapalı kalsa bile geri açıldığında geçen süreye göre tamamlanması gereken askerler hesaplanır.
-- Kışla / Ahır seviyesi yükseldikçe tek birlik eğitim süresi azalır.
+## v0.6 yenilikleri
+- v0.5 sistemleri korunur.
+- Savaş raporunda ganimet Odun, Kil, Demir ve Tahıl olarak ayrı gösterilir.
+- Toplam ganimet ayrıca gösterilir.
+- Saldıran taraf için birlik bazında katılan, kaybedilen ve kalan asker sayıları gösterilir.
+- Savunan rakip için birlik bazında başlangıç, kayıp ve kalan asker sayıları gösterilir.
+- Rakip kayıpları sonraki saldırılarda korunur.
+- Sağ tarafta sürekli Saatlik Üretim paneli bulunur.
+- Ganimet kaynakları askerler köye döndüğünde eklenir.
+- Genel oyun hızı x10.000.000, Dünya Harikası 1x.
 
-## v0.5 yeni özellikler
-- 9x9 dünya haritası görünümü
-- Rakip köyler ve vahalar
-- Normal Saldırı
-- Yağma
-- Destek
-- Gidiş ve dönüş hareketleri
-- Hareketler ekranı
-- Ganimetin dönüşte köye eklenmesi
-- Savaş raporları
-- v0.4 kaynak, bina, ordu ve koordinat sistemleri korunur
-
-## Sunucu kuralları
-- Genel hız: x10.000.000
-- Merkez köy kaynak alanları: maksimum 30
-- Diğer köyler: maksimum 20
-- Dünya Harikası: 1x
-
-## Önemli
-Bu sürüm hâlâ GitHub Pages üzerinde çalışan tarayıcı prototipidir.
-Gerçek oyuncuların aynı dünyada oynaması için backend + veritabanı gerekir.
+## GitHub Pages güncelleme
+Repository içindeki `index.html` ve `README.md` dosyalarını bu pakettekilerle değiştirip `main` branch'e commit edin.
