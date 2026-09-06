@@ -3,22 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FTL WAR v0.4</title>
+<title>FTL WAR v0.5</title>
 <style>
 :root{
-  --bg:#0b110c;--bg2:#132017;--panel:#211e19;--panel2:#2c281f;--line:#66502c;
-  --gold:#f1bd4e;--gold2:#a87328;--text:#f5efe2;--muted:#bdb39f;
-  --red:#b72a24;--green:#2e8a54;--blue:#456f91;--shadow:0 12px 32px rgba(0,0,0,.34)
+  --bg:#0b110c;--panel:#211e19;--panel2:#2b271f;--line:#67512c;--gold:#f1bd4e;--gold2:#a87328;
+  --text:#f6efe2;--muted:#bdb39f;--red:#b72a24;--green:#2e8a54;--shadow:0 12px 32px rgba(0,0,0,.34)
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#1d2a20 0,#0d140f 45%,#080d09 100%);color:var(--text);min-height:100vh}
-button,input,select{font:inherit}.hidden{display:none!important}button{cursor:pointer}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#1d2a20 0,#0d140f 45%,#080d09 100%);color:var(--text);min-height:100vh}
+button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
 .topbar{position:sticky;top:0;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:7px 14px;background:linear-gradient(90deg,#352416,#171b14);border-bottom:2px solid var(--gold2)}
 .logo{display:flex;align-items:center;gap:12px}.brand{font-size:24px;font-weight:900;color:var(--gold)}.speed{background:#b42621;color:#fff;font-weight:900;padding:9px 13px;border-radius:6px}
 .resources{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.res{min-width:120px;background:#292218;border:1px solid #69522b;border-radius:6px;padding:8px 10px;text-align:center;color:#ffd36a;font-weight:800}
 .wrap{max-width:1280px;margin:auto;padding:16px}.nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
 .btn{border:0;border-radius:6px;padding:9px 13px;font-weight:800;color:#fff;background:linear-gradient(#bd8532,#956324);box-shadow:0 2px 0 #654217}.btn.dark{background:#302c26;border:1px solid #645641;box-shadow:none}.btn.red{background:#b72621;box-shadow:none}.btn.green{background:#347e51;box-shadow:none}.btn:disabled{opacity:.5;cursor:not-allowed}
-.layout{display:grid;grid-template-columns:260px 1fr;gap:14px}.side,.main{background:rgba(31,29,24,.97);border:1px solid #58472e;border-radius:10px;box-shadow:var(--shadow)}.side{padding:14px}.main{padding:15px;min-height:660px}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:14px}.side,.main{background:rgba(31,29,24,.97);border:1px solid #58472e;border-radius:10px;box-shadow:var(--shadow)}.side{padding:14px}.main{padding:15px;min-height:680px}
 .player{background:#171713;border:1px solid #514129;border-radius:8px;padding:13px;margin-bottom:12px;line-height:1.45}.player b{color:var(--gold)}
 .side button{width:100%;padding:10px;margin:4px 0;text-align:left;background:#2a261f;color:#eee;border:1px solid #54462f;border-radius:6px}.side button:hover,.side button.active{border-color:var(--gold);color:var(--gold)}
 .heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.heading h2{margin:0;color:var(--gold)}.badge{font-size:12px;background:#3b301d;border:1px solid #7a6238;color:#ffd675;padding:6px 10px;border-radius:999px}
@@ -27,17 +25,16 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
 .field.clay{background:linear-gradient(145deg,#51311f,#271811);border-color:#74482d}.field.iron{background:linear-gradient(145deg,#3a4144,#1d2225);border-color:#5f6a6e}.field.crop{background:linear-gradient(145deg,#4b4a1e,#27260f);border-color:#6d6d2c}.field .icon{font-size:24px}.field .name{font-size:12px}.field strong{font-size:18px}.field button{margin-top:4px;background:#a87328;color:#fff;border:0;border-radius:4px;padding:4px 7px;font-size:11px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}.stat{background:#171713;border:1px solid #50432f;border-radius:7px;padding:11px}.stat small{color:#aaa;display:block}.stat strong{font-size:20px;color:#f1c14e}
 .village-scene{position:relative;min-height:590px;border-radius:14px;overflow:hidden;border:1px solid #5d4f31;background:radial-gradient(circle at 50% 36%,#9e8d55 0 4%,#6a6736 5% 18%,#47542d 19% 38%,#2e3e24 39% 100%)}
-.slot{position:absolute;width:116px;height:92px;transform:translate(-50%,-50%);border-radius:18px;background:rgba(35,31,24,.9);border:2px solid #78613a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;box-shadow:0 8px 18px rgba(0,0,0,.28)}
-.slot:hover{border-color:var(--gold);transform:translate(-50%,-50%) scale(1.03)}.slot.empty{border-style:dashed;color:#b9ad92;background:rgba(24,23,18,.72)}.slot .sicon{font-size:25px}.slot .sname{font-size:12px;font-weight:800}.slot .slvl{font-size:11px;color:#d8c69f}
+.slot{position:absolute;width:116px;height:92px;transform:translate(-50%,-50%);border-radius:18px;background:rgba(35,31,24,.9);border:2px solid #78613a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6px;box-shadow:0 8px 18px rgba(0,0,0,.28)}.slot:hover{border-color:var(--gold);transform:translate(-50%,-50%) scale(1.03)}.slot.empty{border-style:dashed;color:#b9ad92;background:rgba(24,23,18,.72)}.slot .sicon{font-size:25px}.slot .sname{font-size:12px;font-weight:800}.slot .slvl{font-size:11px;color:#d8c69f}
 .queue{margin-top:12px;background:#181713;border:1px solid #50432f;border-radius:8px;padding:12px}.queue h3{margin:0 0 8px;color:var(--gold)}.queue-item{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#262219;border:1px solid #51432f;border-radius:6px;padding:9px}.progress{height:8px;background:#3a3327;border-radius:99px;overflow:hidden;margin-top:6px}.bar{height:100%;background:linear-gradient(90deg,#94702e,#e2b64c)}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card{background:#29251e;border:1px solid #5e4d35;border-radius:9px;padding:13px}.card h3,.card h4{margin:0 0 7px;color:#f0bd50}.card p{margin:5px 0;color:#ccc;line-height:1.35;font-size:13px}
 .unit-card{display:grid;grid-template-columns:60px 1fr;gap:10px;align-items:center}.unit-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;background:#191713;border:1px solid #58472f}
 .input-row{display:flex;gap:7px;margin-top:8px}.input-row input{width:100%;background:#111510;color:#fff;border:1px solid #5d503d;border-radius:5px;padding:8px}.input-row button{white-space:nowrap}
 .army-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px}.army-box{background:#171713;border:1px solid #4f422f;border-radius:8px;padding:11px}.army-box small{display:block;color:#aaa}.army-box strong{font-size:19px;color:#f0be4b}
-.map{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;background:#161b13;border:1px solid #4f5132;border-radius:12px;padding:12px}.tile{aspect-ratio:1/1;border-radius:9px;background:linear-gradient(145deg,#304126,#1c2819);border:1px solid #455535;color:#ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;font-size:11px}.tile.enemy{background:linear-gradient(145deg,#49251f,#281511);border-color:#744036}.tile.me{background:linear-gradient(145deg,#5b4c23,#302713);border-color:#997a35}.tile.empty{opacity:.65}.tile:hover{border-color:var(--gold)}.coord{color:#d9c18a;font-weight:800}
-.table{width:100%;border-collapse:collapse}.table th,.table td{padding:10px;border-bottom:1px solid #43382a;text-align:left}.table th{color:#d9b66c}.good{color:#7fd696}.bad{color:#ff8e85}
+.map{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;background:#161b13;border:1px solid #4f5132;border-radius:12px;padding:12px}.tile{aspect-ratio:1/1;border-radius:9px;background:linear-gradient(145deg,#304126,#1c2819);border:1px solid #455535;color:#ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4px;font-size:11px}.tile.enemy{background:linear-gradient(145deg,#49251f,#281511);border-color:#744036}.tile.me{background:linear-gradient(145deg,#5b4c23,#302713);border-color:#997a35}.tile.oasis{background:linear-gradient(145deg,#25444b,#13272b);border-color:#3f6570}.tile:hover{border-color:var(--gold)}.coord{color:#d9c18a;font-weight:800}
+.report{background:#191713;border:1px solid #4c402e;border-radius:8px;padding:12px;margin:9px 0}.report h4{margin:0 0 6px;color:#f0bd50}.report small{color:#aaa}.good{color:#7fd696}.bad{color:#ff8e85}
+.movement{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#231f19;border:1px solid #51422e;border-radius:8px;padding:10px;margin:8px 0}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.76);display:flex;align-items:center;justify-content:center;padding:18px;z-index:90}.modalbox{width:min(900px,96vw);max-height:88vh;overflow:auto;background:#201d18;border:1px solid #775b30;border-radius:12px;padding:20px;box-shadow:var(--shadow)}
-.report{background:#191713;border:1px solid #4c402e;border-radius:8px;padding:12px;margin:9px 0}.report h4{margin:0 0 6px;color:#f0bd50}.report small{color:#aaa}
 @media(max-width:950px){.layout{grid-template-columns:1fr}.side{display:none}.fields{grid-template-columns:repeat(4,1fr)}.resources{display:none}.cards{grid-template-columns:repeat(2,1fr)}.map{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:650px){.fields{grid-template-columns:repeat(3,1fr)}.stats,.army-summary,.cards{grid-template-columns:1fr}.map{grid-template-columns:repeat(3,1fr)}.slot{width:96px;height:78px}.village-scene{min-height:680px}}
 </style>
@@ -46,8 +43,7 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
 <header class="topbar">
   <div class="logo"><div class="brand">⚔ FTL WAR</div><div class="speed">⚡ x10.000.000</div></div>
   <div class="resources">
-    <div class="res">🌲 <span id="woodTop">0</span></div><div class="res">🧱 <span id="clayTop">0</span></div>
-    <div class="res">⛓ <span id="ironTop">0</span></div><div class="res">🌾 <span id="cropTop">0</span></div><div class="res">🪙 <span id="goldTop">0</span></div>
+    <div class="res">🌲 <span id="woodTop">0</span></div><div class="res">🧱 <span id="clayTop">0</span></div><div class="res">⛓ <span id="ironTop">0</span></div><div class="res">🌾 <span id="cropTop">0</span></div><div class="res">🪙 <span id="goldTop">0</span></div>
   </div>
 </header>
 
@@ -57,6 +53,7 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
     <button class="btn dark" onclick="showPanel('center')">🏛 Merkez</button>
     <button class="btn dark" onclick="showPanel('map')">🗺 Harita</button>
     <button class="btn dark" onclick="showPanel('army')">⚔ Ordu</button>
+    <button class="btn dark" onclick="showPanel('movements')">🕒 Hareketler</button>
     <button class="btn dark" onclick="showPanel('reports')">📜 Raporlar</button>
     <button class="btn dark" onclick="showPanel('messages')">✉ Mesajlar</button>
     <button class="btn red" onclick="logout()">Çıkış</button>
@@ -64,11 +61,14 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
 
   <div class="layout">
     <aside class="side">
-      <div class="player"><div>Komutan: <b id="playerName"></b></div><div>Kavim: <span id="playerTribe"></span></div><div>Köy: <span id="villageName"></span></div><div>Koordinat: <span id="playerCoord"></span></div></div>
+      <div class="player">
+        <div>Komutan: <b id="playerName"></b></div><div>Kavim: <span id="playerTribe"></span></div><div>Köy: <span id="villageName"></span></div><div>Koordinat: <span id="playerCoord"></span></div>
+      </div>
       <button onclick="showPanel('fields')">🌲 Kaynak Alanları</button>
       <button onclick="showPanel('center')">🏛 Köy Merkezi</button>
       <button onclick="showPanel('army')">⚔ Askeri Üs</button>
       <button onclick="showPanel('map')">🗺 Dünya Haritası</button>
+      <button onclick="showPanel('movements')">🕒 Hareketler</button>
       <button onclick="showPanel('reports')">📜 Raporlar</button>
       <button onclick="showPanel('messages')">✉ Mesajlar</button>
     </aside>
@@ -86,13 +86,13 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
       </section>
 
       <section id="panelCenter" class="hidden">
-        <div class="heading"><h2>Köy Merkezi</h2><span class="badge">v0.4</span></div>
-        <div class="notice">v0.3 bina sistemi korunuyor. Boş alana tıkla, bina kur veya mevcut binayı yükselt.</div>
+        <div class="heading"><h2>Köy Merkezi</h2><span class="badge">v0.5</span></div>
+        <div class="notice">v0.4 bina sistemi korunuyor.</div>
         <div class="village-scene" id="villageScene"></div>
         <div class="queue"><h3>🏗 İnşaat Kuyruğu</h3><div id="queueBox">Kuyruk boş.</div></div>
       </section>
 
-      <section id="panelArmy" class="hidden">
+      <section id="panelArmy">
         <div class="heading"><h2>Askeri Üs</h2><span class="badge" id="armyBadge"></span></div>
         <div class="army-summary" id="armySummary"></div>
         <div class="notice" id="armyNotice"></div>
@@ -101,9 +101,14 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
       </section>
 
       <section id="panelMap" class="hidden">
-        <div class="heading"><h2>Dünya Haritası</h2><span class="badge">49 bölge</span></div>
-        <div class="notice">Kırmızı köyler test rakipleridir. Bir köye tıklayıp saldırı gönderebilirsin.</div>
+        <div class="heading"><h2>Dünya Haritası</h2><span class="badge">9×9 görünüm</span></div>
+        <div class="notice">Kırmızı köyler rakip, mavi alanlar vaha. Rakip köye tıklayarak Saldırı / Yağma / Destek gönderebilirsin.</div>
         <div class="map" id="worldMap"></div>
+      </section>
+
+      <section id="panelMovements" class="hidden">
+        <div class="heading"><h2>Birlik Hareketleri</h2><span class="badge" id="movementBadge">0 hareket</span></div>
+        <div id="movementList"></div>
       </section>
 
       <section id="panelReports" class="hidden">
@@ -113,7 +118,7 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
 
       <section id="panelMessages" class="hidden">
         <div class="heading"><h2>Mesajlar</h2><span class="badge">Hazırlık</span></div>
-        <div class="notice">Oyuncular arası gerçek mesajlaşma backend aşamasında eklenecek.</div>
+        <div class="notice">Gerçek oyuncular arası mesajlaşma backend aşamasında eklenecek.</div>
       </section>
     </main>
   </div>
@@ -122,27 +127,35 @@ button,input,select{font:inherit}.hidden{display:none!important}button{cursor:po
 <div id="buildModal" class="modal hidden"><div class="modalbox"><div class="heading"><h2 id="buildTitle">Bina</h2><button class="btn dark" onclick="closeBuild()">Kapat</button></div><div id="buildContent"></div></div></div>
 
 <div id="attackModal" class="modal hidden">
-  <div class="modalbox" style="max-width:700px">
-    <div class="heading"><h2>⚔ Saldırı Gönder</h2><button class="btn dark" onclick="closeAttack()">Kapat</button></div>
+  <div class="modalbox" style="max-width:720px">
+    <div class="heading"><h2>⚔ Birlik Gönder</h2><button class="btn dark" onclick="closeAttack()">Kapat</button></div>
     <div id="targetInfo" class="notice"></div>
+    <div class="card" style="margin-bottom:10px">
+      <h4>Görev tipi</h4>
+      <div class="input-row">
+        <button class="btn dark" onclick="attackMode='attack';updateAttackMode()">Normal Saldırı</button>
+        <button class="btn dark" onclick="attackMode='raid';updateAttackMode()">Yağma</button>
+        <button class="btn dark" onclick="attackMode='support';updateAttackMode()">Destek</button>
+      </div>
+      <p id="attackModeLabel">Seçili: Normal Saldırı</p>
+    </div>
     <div id="attackUnits"></div>
     <div id="attackError" style="color:#ff8f88;margin:10px 0"></div>
-    <button class="btn red" onclick="sendAttack()">Saldırıyı Başlat</button>
+    <button class="btn red" onclick="sendAttack()">Gönder</button>
   </div>
 </div>
 
 <div id="authGate" class="modal hidden">
   <div class="modalbox" style="max-width:760px">
-    <div class="heading"><h2>FTL WAR v0.4</h2><span class="badge">Yeni Komutan</span></div>
-    <div class="notice">Daha önce aynı tarayıcıda oluşturduğun hesabın varsa otomatik açılır. Yeni oyuncuysan aşağıdan hesap oluştur.</div>
+    <div class="heading"><h2>FTL WAR v0.5</h2><span class="badge">Yeni Komutan</span></div>
+    <div class="notice">Eski v0.4 hesabın varsa aynı tarayıcıda korunur.</div>
     <div class="cards" style="grid-template-columns:1fr 1fr">
       <div class="card"><h4>Oyuncu adı</h4><input id="newName" style="width:100%;padding:10px;background:#111510;color:#fff;border:1px solid #5f523d;border-radius:5px"></div>
       <div class="card"><h4>Şifre</h4><input id="newPass" type="password" style="width:100%;padding:10px;background:#111510;color:#fff;border:1px solid #5f523d;border-radius:5px"></div>
     </div>
     <div class="card" style="margin-top:10px"><h4>Köy adı</h4><input id="newVillage" value="FTL Köyü" style="width:100%;padding:10px;background:#111510;color:#fff;border:1px solid #5f523d;border-radius:5px"></div>
     <div class="card" style="margin-top:10px"><h4>Kavim</h4><div class="cards" style="grid-template-columns:repeat(5,1fr)">
-      <button class="btn dark" onclick="newTribe='Romalılar'">🏛 Romalılar</button><button class="btn dark" onclick="newTribe='Cermenler'">⚒ Cermenler</button>
-      <button class="btn dark" onclick="newTribe='Türkler'">🇹🇷 Türkler</button><button class="btn dark" onclick="newTribe='Vikingler'">🛡 Vikingler</button><button class="btn dark" onclick="newTribe='Galyalılar'">🏹 Galyalılar</button>
+      <button class="btn dark" onclick="newTribe='Romalılar'">🏛 Romalılar</button><button class="btn dark" onclick="newTribe='Cermenler'">⚒ Cermenler</button><button class="btn dark" onclick="newTribe='Türkler'">🇹🇷 Türkler</button><button class="btn dark" onclick="newTribe='Vikingler'">🛡 Vikingler</button><button class="btn dark" onclick="newTribe='Galyalılar'">🏹 Galyalılar</button>
     </div></div>
     <div id="gateError" style="color:#ff8f88;margin:10px 0"></div><button class="btn" onclick="createFreshUser()">Hesap Oluştur ve Başla</button>
   </div>
@@ -167,154 +180,121 @@ const BUILDINGS=[
 const SLOT_POS=[[50,49],[50,27],[50,70],[29,48],[70,48],[34,28],[66,28],[34,68],[66,68],[18,35],[82,35],[18,61],[82,61],[50,88],[50,12],[10,48],[90,48],[25,82],[75,82],[25,16],[75,16]];
 const UNIT_DATA={
  "Romalılar":[
-  {id:"legionary",name:"Lejyoner",icon:"🛡",atk:40,def:35,speed:6,cost:{wood:1200,clay:1000,iron:1500,crop:500},time:50},
-  {id:"imperian",name:"İmperyan",icon:"⚔",atk:70,def:40,speed:7,cost:{wood:2000,clay:1700,iron:2400,crop:800},time:70},
-  {id:"equites",name:"Equites",icon:"🐎",atk:120,def:65,speed:14,cost:{wood:3500,clay:2800,iron:4200,crop:1600},time:100}
+  {id:"legionary",name:"Lejyoner",icon:"🛡",atk:40,def:35,speed:6,cost:{wood:1200,clay:1000,iron:1500,crop:500},baseTrain:8},
+  {id:"imperian",name:"İmperyan",icon:"⚔",atk:70,def:40,speed:7,cost:{wood:2000,clay:1700,iron:2400,crop:800},baseTrain:10},
+  {id:"equites",name:"Equites",icon:"🐎",atk:120,def:65,speed:14,cost:{wood:3500,clay:2800,iron:4200,crop:1600},baseTrain:14}
  ],
  "Cermenler":[
-  {id:"club",name:"Tokmakçı",icon:"🪓",atk:45,def:20,speed:7,cost:{wood:1000,clay:800,iron:700,crop:400},time:40},
-  {id:"axe",name:"Balta Savaşçısı",icon:"⚒",atk:75,def:35,speed:6,cost:{wood:1800,clay:1300,iron:1900,crop:700},time:65},
-  {id:"teuton",name:"Cermen Şövalyesi",icon:"🐴",atk:140,def:70,speed:12,cost:{wood:3800,clay:3000,iron:4300,crop:1700},time:110}
+  {id:"club",name:"Tokmakçı",icon:"🪓",atk:45,def:20,speed:7,cost:{wood:1000,clay:800,iron:700,crop:400},baseTrain:7},
+  {id:"axe",name:"Balta Savaşçısı",icon:"⚒",atk:75,def:35,speed:6,cost:{wood:1800,clay:1300,iron:1900,crop:700},baseTrain:9},
+  {id:"teuton",name:"Cermen Şövalyesi",icon:"🐴",atk:140,def:70,speed:12,cost:{wood:3800,clay:3000,iron:4300,crop:1700},baseTrain:12}
  ],
  "Türkler":[
-  {id:"akinci",name:"Akıncı",icon:"🏹",atk:55,def:25,speed:9,cost:{wood:1200,clay:900,iron:1100,crop:500},time:45},
-  {id:"alp",name:"Alp",icon:"🗡",atk:85,def:55,speed:7,cost:{wood:1900,clay:1500,iron:2200,crop:800},time:70},
-  {id:"sipahi",name:"Sipahi",icon:"🐎",atk:145,def:75,speed:15,cost:{wood:3600,clay:3000,iron:4500,crop:1800},time:105}
+  {id:"akinci",name:"Akıncı",icon:"🏹",atk:55,def:25,speed:9,cost:{wood:1200,clay:900,iron:1100,crop:500},baseTrain:7},
+  {id:"alp",name:"Alp",icon:"🗡",atk:85,def:55,speed:7,cost:{wood:1900,clay:1500,iron:2200,crop:800},baseTrain:9},
+  {id:"sipahi",name:"Sipahi",icon:"🐎",atk:145,def:75,speed:15,cost:{wood:3600,clay:3000,iron:4500,crop:1800},baseTrain:12}
  ],
  "Vikingler":[
-  {id:"raider",name:"Yağmacı",icon:"🪓",atk:60,def:25,speed:8,cost:{wood:1300,clay:900,iron:1000,crop:500},time:45},
-  {id:"huscarl",name:"Huscarl",icon:"🛡",atk:80,def:65,speed:6,cost:{wood:2000,clay:1600,iron:2300,crop:900},time:75},
-  {id:"berserker",name:"Berserker",icon:"⚔",atk:155,def:50,speed:11,cost:{wood:4000,clay:2800,iron:4700,crop:1700},time:115}
+  {id:"raider",name:"Yağmacı",icon:"🪓",atk:60,def:25,speed:8,cost:{wood:1300,clay:900,iron:1000,crop:500},baseTrain:7},
+  {id:"huscarl",name:"Huscarl",icon:"🛡",atk:80,def:65,speed:6,cost:{wood:2000,clay:1600,iron:2300,crop:900},baseTrain:9},
+  {id:"berserker",name:"Berserker",icon:"⚔",atk:155,def:50,speed:11,cost:{wood:4000,clay:2800,iron:4700,crop:1700},baseTrain:12}
  ],
  "Galyalılar":[
-  {id:"phalanx",name:"Falanks",icon:"🛡",atk:35,def:55,speed:7,cost:{wood:1100,clay:1400,iron:900,crop:500},time:45},
-  {id:"swordsman",name:"Kılıçlı",icon:"⚔",atk:75,def:45,speed:7,cost:{wood:1800,clay:1500,iron:2100,crop:700},time:65},
-  {id:"haeduan",name:"Haeduan",icon:"🐎",atk:130,def:90,speed:13,cost:{wood:3600,clay:3400,iron:4100,crop:1800},time:110}
- ]
-};
+  {id:"phalanx",name:"Falanks",icon:"🛡",atk:35,def:55,speed:7,cost:{wood:1100,clay:1400,iron:900,crop:500},baseTrain:7},
+  {id:"swordsman",name:"Kılıçlı",icon:"⚔",atk:75,def:45,speed:7,cost:{wood:1800,clay:1500,iron:2100,crop:700},baseTrain:9},
+  {id:"haeduan",name:"Haeduan",icon:"🐎",atk:130,def:90,speed:13,cost:{wood:3600,clay:3400,iron:4100,crop:1800},baseTrain:12}
+ ]};
 const fieldTypes=["wood","clay","iron","crop","wood","clay","iron","crop","wood","clay","iron","crop","wood","clay","iron","crop","crop","crop"];
-const labels={wood:"Odun",clay:"Kil",iron:"Demir",crop:"Tahıl"}, icons={wood:"🌲",clay:"🧱",iron:"⛓",crop:"🌾"};
-let currentUser=null, selectedTarget=null, newTribe="";
+const labels={wood:"Odun",clay:"Kil",iron:"Demir",crop:"Tahıl"},icons={wood:"🌲",clay:"🧱",iron:"⛓",crop:"🌾"};
+let currentUser=null,newTribe="",selectedTarget=null,attackMode="attack";
 
-function userKey(name){return "ftlwar_user_"+name.toLowerCase()}
+function userKey(n){return "ftlwar_user_"+n.toLowerCase()}
 function saveUser(){localStorage.setItem(userKey(currentUser.name),JSON.stringify(currentUser))}
 function fmt(n){return Math.floor(n).toLocaleString("tr-TR")}
 function randomCoord(){return {x:Math.floor(Math.random()*41)-20,y:Math.floor(Math.random()*41)-20}}
-function loadUser(){
- const last=localStorage.getItem("ftlwar_last_user");
- if(!last){setTimeout(()=>document.getElementById("authGate").classList.remove("hidden"),0);return false}
- const raw=localStorage.getItem(userKey(last));
- if(!raw){setTimeout(()=>document.getElementById("authGate").classList.remove("hidden"),0);return false}
- currentUser=JSON.parse(raw);migrate();return true
-}
+function loadUser(){const last=localStorage.getItem("ftlwar_last_user");if(!last){setTimeout(()=>document.getElementById("authGate").classList.remove("hidden"),0);return false}const raw=localStorage.getItem(userKey(last));if(!raw){setTimeout(()=>document.getElementById("authGate").classList.remove("hidden"),0);return false}currentUser=JSON.parse(raw);migrate();return true}
 function migrate(){
  currentUser.resources=currentUser.resources||{wood:1e9,clay:1e9,iron:1e9,crop:1e9,gold:500};
  currentUser.fields=currentUser.fields||fieldTypes.map(type=>({type,level:1}));
  if(!currentUser.buildings){currentUser.buildings=Array(21).fill(null);currentUser.buildings[0]={id:"main",level:1};currentUser.buildings[1]={id:"rally",level:1}}
- currentUser.buildQueue=currentUser.buildQueue||[];
- currentUser.army=currentUser.army||{};
- UNIT_DATA[currentUser.tribe].forEach(u=>{if(currentUser.army[u.id]==null)currentUser.army[u.id]=0});
- currentUser.trainQueue=currentUser.trainQueue||[];
- currentUser.reports=currentUser.reports||[];
- currentUser.coord=currentUser.coord||randomCoord();
- currentUser.attacks=currentUser.attacks||[];
+ currentUser.buildQueue=currentUser.buildQueue||[];currentUser.army=currentUser.army||{};UNIT_DATA[currentUser.tribe].forEach(u=>{if(currentUser.army[u.id]==null)currentUser.army[u.id]=0});
+ // migrate old v0.4 training queue into sequential format
+ if(Array.isArray(currentUser.trainQueue)&&currentUser.trainQueue.length){
+   const old=currentUser.trainQueue[0];
+   if(old && old.qty!=null && old.remaining==null){
+      currentUser.trainQueue=[{id:old.id,remaining:old.qty,completed:0,nextReady:Date.now(),startedAt:Date.now()}];
+   }
+ } else currentUser.trainQueue=[];
+ currentUser.reports=currentUser.reports||[];currentUser.coord=currentUser.coord||randomCoord();currentUser.movements=currentUser.movements||[];
  saveUser()
 }
 function createFreshUser(){
  const name=document.getElementById("newName").value.trim(),pass=document.getElementById("newPass").value,village=document.getElementById("newVillage").value.trim()||"FTL Köyü",err=document.getElementById("gateError");
- if(name.length<3){err.textContent="Oyuncu adı en az 3 karakter olmalı.";return}
- if(pass.length<4){err.textContent="Şifre en az 4 karakter olmalı.";return}
- if(!newTribe){err.textContent="Bir kavim seç.";return}
- const u={name,pass,village,tribe:newTribe,resources:{wood:1e9,clay:1e9,iron:1e9,crop:1e9,gold:500},fields:fieldTypes.map(type=>({type,level:1})),buildings:Array(21).fill(null),buildQueue:[],army:{},trainQueue:[],reports:[],attacks:[],coord:randomCoord()};
- u.buildings[0]={id:"main",level:1};u.buildings[1]={id:"rally",level:1};UNIT_DATA[newTribe].forEach(x=>u.army[x.id]=0);
- localStorage.setItem(userKey(name),JSON.stringify(u));localStorage.setItem("ftlwar_last_user",name);location.reload()
+ if(name.length<3){err.textContent="Oyuncu adı en az 3 karakter olmalı.";return} if(pass.length<4){err.textContent="Şifre en az 4 karakter olmalı.";return} if(!newTribe){err.textContent="Bir kavim seç.";return}
+ const u={name,pass,village,tribe:newTribe,resources:{wood:1e9,clay:1e9,iron:1e9,crop:1e9,gold:500},fields:fieldTypes.map(type=>({type,level:1})),buildings:Array(21).fill(null),buildQueue:[],army:{},trainQueue:[],reports:[],movements:[],coord:randomCoord()};
+ u.buildings[0]={id:"main",level:1};u.buildings[1]={id:"rally",level:1};UNIT_DATA[newTribe].forEach(x=>u.army[x.id]=0);localStorage.setItem(userKey(name),JSON.stringify(u));localStorage.setItem("ftlwar_last_user",name);location.reload()
 }
 function logout(){localStorage.removeItem("ftlwar_last_user");location.reload()}
 function production(type){return currentUser.fields.filter(f=>f.type===type).reduce((s,f)=>s+f.level*f.level*10000000,0)}
 function updateTop(){["wood","clay","iron","crop","gold"].forEach(r=>document.getElementById(r+"Top").textContent=fmt(currentUser.resources[r]||0))}
-function renderFields(){
- const g=document.getElementById("fieldsGrid");g.innerHTML="";
- currentUser.fields.forEach((f,i)=>{const d=document.createElement("div");d.className="field "+f.type;d.innerHTML=`<div class="icon">${icons[f.type]}</div><div class="name">${labels[f.type]}</div><strong>Seviye ${f.level}</strong><button onclick="upgradeField(${i})">${f.level>=30?"MAX":"Yükselt"}</button>`;g.appendChild(d)});
- ["wood","clay","iron","crop"].forEach(t=>document.getElementById(t+"Prod").textContent=fmt(production(t)))
-}
-function upgradeField(i){
- const f=currentUser.fields[i];if(f.level>=30)return;const c=Math.max(1000,Math.floor(2500000*Math.pow(1.7,f.level-1)));
- if(["wood","clay","iron"].some(r=>currentUser.resources[r]<c)||currentUser.resources.crop<c*.6){alert("Yeterli kaynak yok.");return}
- currentUser.resources.wood-=c;currentUser.resources.clay-=c;currentUser.resources.iron-=c;currentUser.resources.crop-=Math.floor(c*.6);f.level++;saveUser();updateTop();renderFields()
-}
+function renderFields(){const g=document.getElementById("fieldsGrid");g.innerHTML="";currentUser.fields.forEach((f,i)=>{const d=document.createElement("div");d.className="field "+f.type;d.innerHTML=`<div class="icon">${icons[f.type]}</div><div class="name">${labels[f.type]}</div><strong>Seviye ${f.level}</strong><button onclick="upgradeField(${i})">${f.level>=30?"MAX":"Yükselt"}</button>`;g.appendChild(d)});["wood","clay","iron","crop"].forEach(t=>document.getElementById(t+"Prod").textContent=fmt(production(t)))}
+function upgradeField(i){const f=currentUser.fields[i];if(f.level>=30)return;const c=Math.max(1000,Math.floor(2500000*Math.pow(1.7,f.level-1)));if(["wood","clay","iron"].some(r=>currentUser.resources[r]<c)||currentUser.resources.crop<c*.6){alert("Yeterli kaynak yok.");return}currentUser.resources.wood-=c;currentUser.resources.clay-=c;currentUser.resources.iron-=c;currentUser.resources.crop-=Math.floor(c*.6);f.level++;saveUser();updateTop();renderFields()}
 function buildingDef(id){return BUILDINGS.find(b=>b.id===id)} function hasBuilding(id){return currentUser.buildings.some(b=>b&&b.id===id)}
-function renderVillage(){
- const s=document.getElementById("villageScene");s.innerHTML="";
- SLOT_POS.forEach((p,i)=>{const b=currentUser.buildings[i],el=document.createElement("button");el.className="slot "+(!b?"empty":"");el.style.left=p[0]+"%";el.style.top=p[1]+"%";
- if(b){const d=buildingDef(b.id);el.innerHTML=`<div class="sicon">${d.icon}</div><div class="sname">${d.name}</div><div class="slvl">Seviye ${b.level}</div>`}
- else el.innerHTML=`<div class="sicon">➕</div><div class="sname">Boş Alan</div>`;el.onclick=()=>openBuild(i);s.appendChild(el)});
- renderBuildQueue()
-}
+function buildingLevel(id){const b=currentUser.buildings.find(b=>b&&b.id===id);return b?b.level:0}
+function renderVillage(){const s=document.getElementById("villageScene");s.innerHTML="";SLOT_POS.forEach((p,i)=>{const b=currentUser.buildings[i],el=document.createElement("button");el.className="slot "+(!b?"empty":"");el.style.left=p[0]+"%";el.style.top=p[1]+"%";if(b){const d=buildingDef(b.id);el.innerHTML=`<div class="sicon">${d.icon}</div><div class="sname">${d.name}</div><div class="slvl">Seviye ${b.level}</div>`}else el.innerHTML=`<div class="sicon">➕</div><div class="sname">Boş Alan</div>`;el.onclick=()=>openBuild(i);s.appendChild(el)});renderBuildQueue()}
 function calcCost(def,level){const m=Math.pow(1.55,level-1),o={};for(const r in def.base)o[r]=Math.floor(def.base[r]*m);return o}
 function buildTime(def,level){return Math.max(1,Math.ceil((def.time*Math.pow(1.35,level-1))/SPEED*1000))}
-function openBuild(slot){
- const existing=currentUser.buildings[slot],cont=document.getElementById("buildContent");
- if(existing){const d=buildingDef(existing.id),n=existing.level+1,c=calcCost(d,n),t=buildTime(d,n);document.getElementById("buildTitle").textContent=d.name;cont.innerHTML=`<div class="card"><h3>${d.icon} ${d.name} • Seviye ${existing.level}</h3><p>Sonraki maliyet: 🌲 ${fmt(c.wood)} • 🧱 ${fmt(c.clay)} • ⛓ ${fmt(c.iron)} • 🌾 ${fmt(c.crop)}</p><p>Süre: ${t} sn</p><button class="btn" onclick="queueBuild(${slot},'${d.id}')">Seviye ${n}'e Yükselt</button></div>`}
- else{document.getElementById("buildTitle").textContent="Yeni Bina Kur";cont.innerHTML='<div class="cards">'+BUILDINGS.map(d=>{const c=calcCost(d,1),t=buildTime(d,1);return `<div class="card"><h3>${d.icon} ${d.name}</h3><p>🌲 ${fmt(c.wood)} • 🧱 ${fmt(c.clay)} • ⛓ ${fmt(c.iron)} • 🌾 ${fmt(c.crop)}</p><p>${t} sn</p><button class="btn" onclick="queueBuild(${slot},'${d.id}')">Kur</button></div>`}).join("")+'</div>'}
- document.getElementById("buildModal").classList.remove("hidden")
-}
+function openBuild(slot){const existing=currentUser.buildings[slot],cont=document.getElementById("buildContent");if(existing){const d=buildingDef(existing.id),n=existing.level+1,c=calcCost(d,n),t=buildTime(d,n);document.getElementById("buildTitle").textContent=d.name;cont.innerHTML=`<div class="card"><h3>${d.icon} ${d.name} • Seviye ${existing.level}</h3><p>Sonraki maliyet: 🌲 ${fmt(c.wood)} • 🧱 ${fmt(c.clay)} • ⛓ ${fmt(c.iron)} • 🌾 ${fmt(c.crop)}</p><p>Süre: ${t} sn</p><button class="btn" onclick="queueBuild(${slot},'${d.id}')">Seviye ${n}'e Yükselt</button></div>`}else{document.getElementById("buildTitle").textContent="Yeni Bina Kur";cont.innerHTML='<div class="cards">'+BUILDINGS.map(d=>{const c=calcCost(d,1),t=buildTime(d,1);return `<div class="card"><h3>${d.icon} ${d.name}</h3><p>🌲 ${fmt(c.wood)} • 🧱 ${fmt(c.clay)} • ⛓ ${fmt(c.iron)} • 🌾 ${fmt(c.crop)}</p><p>${t} sn</p><button class="btn" onclick="queueBuild(${slot},'${d.id}')">Kur</button></div>`}).join("")+'</div>'}document.getElementById("buildModal").classList.remove("hidden")}
 function closeBuild(){document.getElementById("buildModal").classList.add("hidden")}
-function queueBuild(slot,id){
- if(currentUser.buildQueue.length){alert("Aynı anda 1 inşaat yapılabilir.");return}
- const ex=currentUser.buildings[slot],d=buildingDef(id),lvl=ex?ex.level+1:1,c=calcCost(d,lvl);
- for(const r of ["wood","clay","iron","crop"])if(currentUser.resources[r]<c[r]){alert("Yeterli kaynak yok.");return}
- for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]-=c[r];
- const sec=buildTime(d,lvl),now=Date.now();currentUser.buildQueue.push({slot,id,level:lvl,start:now,end:now+sec*1000});saveUser();closeBuild();updateTop();renderBuildQueue()
+function queueBuild(slot,id){if(currentUser.buildQueue.length){alert("Aynı anda 1 inşaat yapılabilir.");return}const ex=currentUser.buildings[slot],d=buildingDef(id),lvl=ex?ex.level+1:1,c=calcCost(d,lvl);for(const r of ["wood","clay","iron","crop"])if(currentUser.resources[r]<c[r]){alert("Yeterli kaynak yok.");return}for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]-=c[r];const sec=buildTime(d,lvl),now=Date.now();currentUser.buildQueue.push({slot,id,level:lvl,start:now,end:now+sec*1000});saveUser();closeBuild();updateTop();renderBuildQueue()}
+function renderBuildQueue(){const b=document.getElementById("queueBox");if(!currentUser.buildQueue.length){b.textContent="Kuyruk boş.";return}const q=currentUser.buildQueue[0],d=buildingDef(q.id),now=Date.now(),left=Math.max(0,q.end-now),pct=Math.min(100,(now-q.start)/(q.end-q.start)*100);b.innerHTML=`<div class="queue-item"><div><b>${d.icon} ${d.name}</b> • Seviye ${q.level}<div class="progress"><div class="bar" style="width:${pct}%"></div></div></div><div>${Math.ceil(left/1000)} sn</div></div>`;if(left<=0){const q2=currentUser.buildQueue.shift(),ex=currentUser.buildings[q2.slot];if(ex)ex.level=q2.level;else currentUser.buildings[q2.slot]={id:q2.id,level:q2.level};saveUser();renderVillage();renderArmy()}}
+function unitTrainSeconds(u){
+ const stableNeeded=(UNIT_DATA[currentUser.tribe].findIndex(x=>x.id===u.id)===2);
+ const lvl=Math.max(1,buildingLevel(stableNeeded?"stable":"barracks"));
+ const buildingFactor=Math.pow(0.88,lvl-1);
+ return Math.max(0.25, u.baseTrain*buildingFactor); // each unit individually
 }
-function renderBuildQueue(){
- const b=document.getElementById("queueBox");if(!currentUser.buildQueue.length){b.textContent="Kuyruk boş.";return}
- const q=currentUser.buildQueue[0],d=buildingDef(q.id),now=Date.now(),left=Math.max(0,q.end-now),pct=Math.min(100,(now-q.start)/(q.end-q.start)*100);
- b.innerHTML=`<div class="queue-item"><div><b>${d.icon} ${d.name}</b> • Seviye ${q.level}<div class="progress"><div class="bar" style="width:${pct}%"></div></div></div><div>${Math.ceil(left/1000)} sn</div></div>`;if(left<=0)finishBuild()
-}
-function finishBuild(){const q=currentUser.buildQueue.shift();const ex=currentUser.buildings[q.slot];if(ex)ex.level=q.level;else currentUser.buildings[q.slot]={id:q.id,level:q.level};saveUser();renderVillage();renderArmy()}
 function renderArmy(){
- const units=UNIT_DATA[currentUser.tribe],summary=document.getElementById("armySummary");summary.innerHTML=units.map(u=>`<div class="army-box"><small>${u.icon} ${u.name}</small><strong>${fmt(currentUser.army[u.id]||0)}</strong></div>`).join("");
- document.getElementById("armyNotice").textContent=hasBuilding("barracks")?"Kışla hazır. Piyade birlikleri eğitilebilir. Süvari birimleri için Ahır gerekir.":"Asker eğitmek için önce Köy Merkezi'nde Kışla kurmalısın.";
- const cards=document.getElementById("unitCards");cards.innerHTML=units.map((u,idx)=>{
-  const needsStable=idx===2,enabled=hasBuilding(needsStable?"stable":"barracks");
-  return `<div class="card"><div class="unit-card"><div class="unit-icon">${u.icon}</div><div><h3>${u.name}</h3><p>Saldırı ${u.atk} • Savunma ${u.def} • Hız ${u.speed}</p></div></div>
-  <p>Maliyet / birlik: 🌲 ${fmt(u.cost.wood)} • 🧱 ${fmt(u.cost.clay)} • ⛓ ${fmt(u.cost.iron)} • 🌾 ${fmt(u.cost.crop)}</p>
-  <div class="input-row"><input id="qty_${u.id}" type="number" min="1" value="10"><button class="btn ${enabled?"":"dark"}" ${enabled?"":"disabled"} onclick="trainUnits('${u.id}')">Eğit</button></div></div>`
- }).join("");renderTrainQueue()
+ const units=UNIT_DATA[currentUser.tribe];document.getElementById("armySummary").innerHTML=units.map(u=>`<div class="army-box"><small>${u.icon} ${u.name}</small><strong>${fmt(currentUser.army[u.id]||0)}</strong></div>`).join("");
+ document.getElementById("armyNotice").textContent=hasBuilding("barracks")?"Kışla hazır. Birlikler artık TEK TEK tamamlanır. Kışla/Ahır seviyesi yükseldikçe tek birlik süresi azalır.":"Asker eğitmek için önce Kışla kurmalısın.";
+ document.getElementById("unitCards").innerHTML=units.map((u,idx)=>{const needStable=idx===2,enabled=hasBuilding(needStable?"stable":"barracks"),sec=unitTrainSeconds(u);return `<div class="card"><div class="unit-card"><div class="unit-icon">${u.icon}</div><div><h3>${u.name}</h3><p>Saldırı ${u.atk} • Savunma ${u.def} • Hız ${u.speed}</p></div></div><p>Maliyet / birlik: 🌲 ${fmt(u.cost.wood)} • 🧱 ${fmt(u.cost.clay)} • ⛓ ${fmt(u.cost.iron)} • 🌾 ${fmt(u.cost.crop)}</p><p>1 birlik süresi: <b>${sec.toFixed(2)} sn</b></p><div class="input-row"><input id="qty_${u.id}" type="number" min="1" value="100"><button class="btn ${enabled?"":"dark"}" ${enabled?"":"disabled"} onclick="trainUnits('${u.id}')">Eğit</button></div></div>`}).join("");renderTrainQueue()
 }
 function trainUnits(id){
- if(currentUser.trainQueue.length){alert("Aynı anda 1 eğitim kuyruğu kullanılabilir.");return}
  const u=UNIT_DATA[currentUser.tribe].find(x=>x.id===id),qty=Math.max(1,parseInt(document.getElementById("qty_"+id).value||1)),idx=UNIT_DATA[currentUser.tribe].findIndex(x=>x.id===id);
- if(idx===2&&!hasBuilding("stable")){alert("Bu birlik için Ahır gerekir.");return}
- if(idx<2&&!hasBuilding("barracks")){alert("Bu birlik için Kışla gerekir.");return}
+ if(idx===2&&!hasBuilding("stable")){alert("Bu birlik için Ahır gerekir.");return} if(idx<2&&!hasBuilding("barracks")){alert("Bu birlik için Kışla gerekir.");return}
  const total={};for(const r in u.cost)total[r]=u.cost[r]*qty;for(const r of ["wood","clay","iron","crop"])if(currentUser.resources[r]<total[r]){alert("Yeterli kaynak yok.");return}
  for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]-=total[r];
- const sec=Math.max(1,Math.ceil(u.time*qty/SPEED*1000)),now=Date.now();currentUser.trainQueue.push({id,qty,start:now,end:now+sec*1000});saveUser();updateTop();renderTrainQueue()
+ const sec=unitTrainSeconds(u),now=Date.now();
+ if(currentUser.trainQueue.length && currentUser.trainQueue[0].id===id){currentUser.trainQueue[0].remaining+=qty}
+ else if(currentUser.trainQueue.length){alert("v0.5'te aynı eğitim kuyruğunda önce mevcut birlik tipi bitmelidir.");for(const r of ["wood","clay","iron","crop"])currentUser.resources[r]+=total[r];return}
+ else currentUser.trainQueue=[{id,remaining:qty,completed:0,nextReady:now+sec*1000,startedAt:now,unitSeconds:sec}];
+ saveUser();updateTop();renderTrainQueue()
+}
+function processTraining(){
+ if(!currentUser.trainQueue.length)return;
+ const q=currentUser.trainQueue[0],u=UNIT_DATA[currentUser.tribe].find(x=>x.id===q.id),sec=q.unitSeconds||unitTrainSeconds(u),now=Date.now();
+ if(q.nextReady==null)q.nextReady=now+sec*1000;
+ if(now>=q.nextReady){
+   const elapsedUnits=Math.floor((now-q.nextReady)/(sec*1000))+1;
+   const done=Math.min(q.remaining,elapsedUnits);
+   currentUser.army[q.id]=(currentUser.army[q.id]||0)+done;
+   q.remaining-=done;q.completed=(q.completed||0)+done;q.nextReady+=done*sec*1000;
+   if(q.remaining<=0)currentUser.trainQueue.shift();
+   saveUser()
+ }
 }
 function renderTrainQueue(){
  const b=document.getElementById("trainQueueBox");if(!currentUser.trainQueue.length){b.textContent="Kuyruk boş.";return}
- const q=currentUser.trainQueue[0],u=UNIT_DATA[currentUser.tribe].find(x=>x.id===q.id),now=Date.now(),left=Math.max(0,q.end-now),pct=Math.min(100,(now-q.start)/(q.end-q.start)*100);
- b.innerHTML=`<div class="queue-item"><div><b>${u.icon} ${u.name}</b> × ${q.qty}<div class="progress"><div class="bar" style="width:${pct}%"></div></div></div><div>${Math.ceil(left/1000)} sn</div></div>`;if(left<=0)finishTraining()
+ const q=currentUser.trainQueue[0],u=UNIT_DATA[currentUser.tribe].find(x=>x.id===q.id),now=Date.now(),sec=q.unitSeconds||unitTrainSeconds(u),left=Math.max(0,q.nextReady-now),pct=Math.min(100,Math.max(0,(sec*1000-left)/(sec*1000)*100));
+ b.innerHTML=`<div class="queue-item"><div><b>${u.icon} ${u.name}</b> • Kalan: <b>${fmt(q.remaining)}</b> • Tamamlanan: ${fmt(q.completed||0)}<div class="progress"><div class="bar" style="width:${pct}%"></div></div><small>Her birlik tek tek orduya eklenir.</small></div><div>Sonraki birlik: ${(left/1000).toFixed(2)} sn</div></div>`
 }
-function finishTraining(){const q=currentUser.trainQueue.shift();currentUser.army[q.id]=(currentUser.army[q.id]||0)+q.qty;saveUser();renderArmy()}
-function enemies(){
- return [
-  {name:"KaraKurt",village:"Kuzey Kalesi",x:-8,y:5,power:650},{name:"Mızrak",village:"Demirhisar",x:6,y:-4,power:900},{name:"RomaX",village:"Kartal Yuvası",x:12,y:7,power:1200},
-  {name:"Valkyr",village:"Fırtına",x:-13,y:-8,power:1600},{name:"Gallia",village:"Yeşil Vadi",x:3,y:11,power:800},{name:"Barbar",village:"Kızıl Tepe",x:-3,y:-12,power:1100}
- ]
-}
-function renderMap(){
- const m=document.getElementById("worldMap");m.innerHTML="";for(let y=3;y>=-3;y--)for(let x=-3;x<=3;x++){
-  const wx=currentUser.coord.x+x*3,wy=currentUser.coord.y+y*3;let enemy=enemies().find(e=>Math.abs(e.x-wx)<=1&&Math.abs(e.y-wy)<=1),cl="tile empty",html=`<div>🌲</div><div class="coord">${wx}|${wy}</div><div>Boş</div>`,click=null;
-  if(x===0&&y===0){cl="tile me";html=`<div>🏰</div><div class="coord">${currentUser.coord.x}|${currentUser.coord.y}</div><div>${currentUser.village}</div>`}
-  else if(enemy){cl="tile enemy";html=`<div>🏯</div><div class="coord">${enemy.x}|${enemy.y}</div><div>${enemy.village}</div>`;click=()=>openAttack(enemy)}
-  const d=document.createElement("button");d.className=cl;d.innerHTML=html;if(click)d.onclick=click;m.appendChild(d)
- }}
-function openAttack(enemy){
- selectedTarget=enemy;document.getElementById("targetInfo").innerHTML=`Hedef: <b>${enemy.village}</b> • Oyuncu: ${enemy.name} • Koordinat: ${enemy.x}|${enemy.y} • Tahmini savunma gücü: ${fmt(enemy.power)}`;
- const units=UNIT_DATA[currentUser.tribe];document.getElementById("attackUnits").innerHTML=units.map(u=>`<div class="card" style="margin-bottom:8px"><div class="input-row"><div style="flex:1"><b>${u.icon} ${u.name}</b><br><small>Mevcut: ${fmt(currentUser.army[u.id]||0)}</small></div><input id="atk_${u.id}" type="number" min="0" max="${currentUser.army[u.id]||0}" value="0"></div></div>`).join("");
- document.getElementById("attackError").textContent="";document.getElementById("attackModal").classList.remove("hidden")
-}
+function enemies(){return[
+ {name:"KaraKurt",village:"Kuzey Kalesi",x:-8,y:5,power:650},{name:"Mızrak",village:"Demirhisar",x:6,y:-4,power:900},{name:"RomaX",village:"Kartal Yuvası",x:12,y:7,power:1200},{name:"Valkyr",village:"Fırtına",x:-13,y:-8,power:1600},{name:"Gallia",village:"Yeşil Vadi",x:3,y:11,power:800},{name:"Barbar",village:"Kızıl Tepe",x:-3,y:-12,power:1100},
+ {name:"Sancak",village:"Akıncı Ovası",x:15,y:-10,power:1400},{name:"Nord",village:"Buz Limanı",x:-17,y:13,power:1750}
+]}
+function renderMap(){const m=document.getElementById("worldMap");m.innerHTML="";for(let y=4;y>=-4;y--)for(let x=-4;x<=4;x++){const wx=currentUser.coord.x+x*3,wy=currentUser.coord.y+y*3;let enemy=enemies().find(e=>Math.abs(e.x-wx)<=1&&Math.abs(e.y-wy)<=1),cl="tile",html=`<div>🌲</div><div class="coord">${wx}|${wy}</div><div>Boş</div>`,click=null;if(x===0&&y===0){cl="tile me";html=`<div>🏰</div><div class="coord">${currentUser.coord.x}|${currentUser.coord.y}</div><div>${currentUser.village}</div>`}else if(enemy){cl="tile enemy";html=`<div>🏯</div><div class="coord">${enemy.x}|${enemy.y}</div><div>${enemy.village}</div>`;click=()=>openAttack(enemy)}else if((Math.abs(wx+wy)%7)===0){cl="tile oasis";html=`<div>💧</div><div class="coord">${wx}|${wy}</div><div>Vaha</div>`}const d=document.createElement("button");d.className=cl;d.innerHTML=html;if(click)d.onclick=click;m.appendChild(d)}}
+function updateAttackMode(){document.getElementById("attackModeLabel").textContent="Seçili: "+({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[attackMode])}
+function openAttack(enemy){selectedTarget=enemy;attackMode="attack";updateAttackMode();document.getElementById("targetInfo").innerHTML=`Hedef: <b>${enemy.village}</b> • Oyuncu: ${enemy.name} • Koordinat: ${enemy.x}|${enemy.y} • Tahmini savunma: ${fmt(enemy.power)}`;document.getElementById("attackUnits").innerHTML=UNIT_DATA[currentUser.tribe].map(u=>`<div class="card" style="margin-bottom:8px"><div class="input-row"><div style="flex:1"><b>${u.icon} ${u.name}</b><br><small>Mevcut: ${fmt(currentUser.army[u.id]||0)}</small></div><input id="atk_${u.id}" type="number" min="0" max="${currentUser.army[u.id]||0}" value="0"></div></div>`).join("");document.getElementById("attackError").textContent="";document.getElementById("attackModal").classList.remove("hidden")}
 function closeAttack(){document.getElementById("attackModal").classList.add("hidden")}
 function distance(a,b){return Math.sqrt((a.x-b.x)**2+(a.y-b.y)**2)}
 function sendAttack(){
@@ -322,32 +302,32 @@ function sendAttack(){
  for(const u of units){const q=Math.max(0,parseInt(document.getElementById("atk_"+u.id).value||0));if(q>(currentUser.army[u.id]||0)){document.getElementById("attackError").textContent="Mevcut askerden fazlasını gönderemezsin.";return}if(q){sent[u.id]=q;totalAtk+=q*u.atk;total+=q;minSpeed=Math.min(minSpeed,u.speed)}}
  if(!total){document.getElementById("attackError").textContent="En az 1 asker seç.";return}
  for(const id in sent)currentUser.army[id]-=sent[id];
- const dist=distance(currentUser.coord,selectedTarget),sec=Math.max(2,Math.ceil(dist*60/minSpeed/SPEED*100000));
- const now=Date.now();currentUser.attacks.push({target:selectedTarget,units:sent,totalAtk,start:now,end:now+sec*1000});saveUser();closeAttack();renderArmy();alert(`Saldırı yola çıktı. Tahmini varış: ${sec} sn`)
+ const dist=distance(currentUser.coord,selectedTarget),travel=Math.max(3,Math.ceil(dist*2/minSpeed));
+ const now=Date.now();currentUser.movements.push({id:"mv_"+now,type:attackMode,phase:"outgoing",target:selectedTarget,units:sent,totalAtk,start:now,arrival:now+travel*1000,returnAt:null,travel});
+ saveUser();closeAttack();renderArmy();renderMovements();alert(`${({attack:"Saldırı",raid:"Yağma",support:"Destek"}[attackMode])} yola çıktı. Varış: ${travel} sn`)
 }
-function resolveAttacks(){
- const now=Date.now(),remain=[];for(const a of currentUser.attacks){if(a.end>now){remain.push(a);continue}
-  const win=a.totalAtk>=a.target.power,ratio=win?0.18:0.65,returned={};for(const u of UNIT_DATA[currentUser.tribe]){const sent=a.units[u.id]||0;returned[u.id]=Math.max(0,Math.floor(sent*(1-ratio)));currentUser.army[u.id]=(currentUser.army[u.id]||0)+returned[u.id]}
-  let loot=0;if(win){loot=Math.floor(a.target.power*900);currentUser.resources.wood+=loot;currentUser.resources.clay+=loot;currentUser.resources.iron+=loot;currentUser.resources.crop+=Math.floor(loot*.7)}
-  currentUser.reports.unshift({time:new Date().toISOString(),target:a.target,result:win?"Zafer":"Yenilgi",attack:a.totalAtk,defense:a.target.power,loot,returned});
- }currentUser.attacks=remain;if(remain.length!==currentUser.attacks.length){}saveUser()
+function resolveMovements(){
+ const now=Date.now();for(const m of currentUser.movements){
+   if(m.phase==="outgoing" && now>=m.arrival){
+     if(m.type==="support"){m.phase="returning";m.returnAt=now+m.travel*1000;m.result="Destek ulaştı";continue}
+     const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,win=atk>=m.target.power,lossRate=win?(m.type==="raid"?0.10:0.18):0.65;
+     m.returningUnits={};for(const u of UNIT_DATA[currentUser.tribe]){const sent=m.units[u.id]||0;m.returningUnits[u.id]=Math.max(0,Math.floor(sent*(1-lossRate)))}
+     m.loot=win?Math.floor(m.target.power*(m.type==="raid"?1200:900)):0;m.result=win?"Zafer":"Yenilgi";
+     m.phase="returning";m.returnAt=now+m.travel*1000;
+     currentUser.reports.unshift({time:new Date().toISOString(),mode:m.type,target:m.target,result:m.result,attack:Math.floor(atk),defense:m.target.power,loot:m.loot,sent:m.units,returned:m.returningUnits})
+   }else if(m.phase==="returning" && now>=m.returnAt){
+     const units=m.returningUnits||m.units;for(const id in units)currentUser.army[id]=(currentUser.army[id]||0)+units[id];
+     if(m.loot){currentUser.resources.wood+=m.loot;currentUser.resources.clay+=m.loot;currentUser.resources.iron+=m.loot;currentUser.resources.crop+=Math.floor(m.loot*.7)}
+     m.phase="done"
+   }
+ }
+ currentUser.movements=currentUser.movements.filter(m=>m.phase!=="done");saveUser()
 }
-function renderReports(){
- const l=document.getElementById("reportList");document.getElementById("reportBadge").textContent=currentUser.reports.length+" rapor";
- if(!currentUser.reports.length){l.innerHTML='<div class="notice">Henüz savaş raporu yok.</div>';return}
- l.innerHTML=currentUser.reports.map(r=>`<div class="report"><h4 class="${r.result==="Zafer"?"good":"bad"}">${r.result==="Zafer"?"🏆":"☠"} ${r.result} • ${r.target.village}</h4><small>${new Date(r.time).toLocaleString("tr-TR")}</small><p>Saldırı gücü: ${fmt(r.attack)} • Savunma gücü: ${fmt(r.defense)}</p><p>Ganimet: ${fmt(r.loot)}</p></div>`).join("")
-}
-function showPanel(name){
- const m={fields:"panelFields",center:"panelCenter",army:"panelArmy",map:"panelMap",reports:"panelReports",messages:"panelMessages"};Object.values(m).forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById(m[name]).classList.remove("hidden");
- if(name==="army")renderArmy();if(name==="map")renderMap();if(name==="reports")renderReports();if(name==="center")renderVillage()
-}
-function tick(){
- if(!currentUser)return;["wood","clay","iron","crop"].forEach(t=>currentUser.resources[t]+=production(t)/3600);resolveAttacks();renderBuildQueue();renderTrainQueue();updateTop();saveUser()
-}
-if(loadUser()){
- document.getElementById("playerName").textContent=currentUser.name;document.getElementById("playerTribe").textContent=currentUser.tribe;document.getElementById("villageName").textContent=currentUser.village;document.getElementById("playerCoord").textContent=currentUser.coord.x+"|"+currentUser.coord.y;document.getElementById("armyBadge").textContent=currentUser.tribe;
- updateTop();renderFields();renderVillage();renderArmy();renderMap();renderReports();showPanel("army");setInterval(tick,1000)
-}
+function renderMovements(){const l=document.getElementById("movementList");document.getElementById("movementBadge").textContent=currentUser.movements.length+" hareket";if(!currentUser.movements.length){l.innerHTML='<div class="notice">Aktif birlik hareketi yok.</div>';return}const now=Date.now();l.innerHTML=currentUser.movements.map(m=>{const end=m.phase==="outgoing"?m.arrival:m.returnAt,left=Math.max(0,Math.ceil((end-now)/1000));return `<div class="movement"><div><b>${m.phase==="outgoing"?"➡️":"⬅️"} ${m.target.village}</b><br><small>${({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[m.type])} • ${m.phase==="outgoing"?"Gidiyor":"Dönüyor"}</small></div><div>${left} sn</div></div>`}).join("")}
+function renderReports(){const l=document.getElementById("reportList");document.getElementById("reportBadge").textContent=currentUser.reports.length+" rapor";if(!currentUser.reports.length){l.innerHTML='<div class="notice">Henüz savaş raporu yok.</div>';return}l.innerHTML=currentUser.reports.map(r=>`<div class="report"><h4 class="${r.result==="Zafer"?"good":"bad"}">${r.result==="Zafer"?"🏆":"☠"} ${r.result} • ${r.target.village}</h4><small>${new Date(r.time).toLocaleString("tr-TR")} • ${({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[r.mode]||"Saldırı")}</small><p>Saldırı gücü: ${fmt(r.attack)} • Savunma gücü: ${fmt(r.defense)}</p><p>Ganimet: ${fmt(r.loot)}</p></div>`).join("")}
+function showPanel(name){const m={fields:"panelFields",center:"panelCenter",army:"panelArmy",map:"panelMap",movements:"panelMovements",reports:"panelReports",messages:"panelMessages"};Object.values(m).forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById(m[name]).classList.remove("hidden");if(name==="army")renderArmy();if(name==="map")renderMap();if(name==="movements")renderMovements();if(name==="reports")renderReports();if(name==="center")renderVillage()}
+function tick(){if(!currentUser)return;["wood","clay","iron","crop"].forEach(t=>currentUser.resources[t]+=production(t)/3600);processTraining();resolveMovements();renderBuildQueue();renderTrainQueue();renderMovements();updateTop();saveUser()}
+if(loadUser()){document.getElementById("playerName").textContent=currentUser.name;document.getElementById("playerTribe").textContent=currentUser.tribe;document.getElementById("villageName").textContent=currentUser.village;document.getElementById("playerCoord").textContent=currentUser.coord.x+"|"+currentUser.coord.y;document.getElementById("armyBadge").textContent=currentUser.tribe;updateTop();renderFields();renderVillage();renderArmy();renderMap();renderReports();renderMovements();showPanel("army");setInterval(tick,250)}
 </script>
 </body>
 </html>

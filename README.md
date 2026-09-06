@@ -1,33 +1,25 @@
-# FTL WAR v0.4
+# FTL WAR v0.5
 
-FTL WAR tarayıcı tabanlı PvP strateji oyununun dördüncü prototip sürümü.
+FTL WAR tarayıcı tabanlı PvP strateji oyununun beşinci prototip sürümü.
 
-## v0.4 yenilikleri
-- v0.3 kaynak ve bina sistemi korunur
-- 5 kavme özel birlik setleri
-- Kavimlere göre piyade ve süvari birlikleri
-- Birlik saldırı, savunma ve hız değerleri
-- Kışla üzerinden piyade eğitimi
-- Ahır üzerinden süvari eğitimi
-- Birlik maliyetleri
-- x10.000.000 hızına göre eğitim kuyruğu
-- Dünya haritası
-- Oyuncu koordinatı
-- Test rakip köyleri
-- Hedef köye saldırı gönderme
-- Mesafeye ve en yavaş birliğe göre saldırı süresi
-- Basit saldırı/savunma çözümü
-- Zafer / yenilgi sonucu
-- Ganimet
-- Hayatta kalan askerlerin geri dönmesi
+## v0.5 önemli düzeltme
+- Askerler artık toplam eğitim süresi sonunda topluca verilmez.
+- Her birlik kendi süresi dolduğunda TEK TEK orduya eklenir.
+- Örn. 100.000 Cermen Şövalyesi bastığında kuyrukta kalan sayı azalır ve askerler sırayla tamamlanır.
+- Sayfa kapalı kalsa bile geri açıldığında geçen süreye göre tamamlanması gereken askerler hesaplanır.
+- Kışla / Ahır seviyesi yükseldikçe tek birlik eğitim süresi azalır.
+
+## v0.5 yeni özellikler
+- 9x9 dünya haritası görünümü
+- Rakip köyler ve vahalar
+- Normal Saldırı
+- Yağma
+- Destek
+- Gidiş ve dönüş hareketleri
+- Hareketler ekranı
+- Ganimetin dönüşte köye eklenmesi
 - Savaş raporları
-
-## Kavimler
-- Romalılar
-- Cermenler
-- Türkler
-- Vikingler
-- Galyalılar
+- v0.4 kaynak, bina, ordu ve koordinat sistemleri korunur
 
 ## Sunucu kuralları
 - Genel hız: x10.000.000
@@ -36,6 +28,5 @@ FTL WAR tarayıcı tabanlı PvP strateji oyununun dördüncü prototip sürümü
 - Dünya Harikası: 1x
 
 ## Önemli
-Bu sürüm hâlâ GitHub Pages üzerinde çalışan tek tarayıcılı prototiptir.
-Gerçek oyuncuların birbirlerini görmesi, gerçek hesap sistemi, ittifak, mesajlaşma,
-MultiHunter, altın satın alma ve kalıcı dünya haritası için backend + veritabanı gerekir.
+Bu sürüm hâlâ GitHub Pages üzerinde çalışan tarayıcı prototipidir.
+Gerçek oyuncuların aynı dünyada oynaması için backend + veritabanı gerekir.
