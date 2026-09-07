@@ -1,40 +1,31 @@
-# FTL WAR v0.7
+# FTL WAR v0.8
 
-FTL WAR tarayıcı tabanlı PvP strateji oyununun yedinci prototip sürümü.
+FTL WAR'ın klasik köy-strateji görünümüne geçiş sürümü.
 
-## v0.7 ana düzeltmesi: gerçek x10.000.000 asker eğitim hızı
-- Birlik eğitim süresi artık önce 1x sunucu süresinden hesaplanır.
-- Sonra Kışla / Ahır seviye katsayısı uygulanır.
-- Son olarak süre x10.000.000 sunucu hızına bölünür.
-- Tokmakçı örneği:
-  - Kışla Seviye 1: 1x = 90 saniye → x10.000.000 = 0,000009 saniye / birlik.
-  - Kışla Seviye 20: 1x = 45 saniye → x10.000.000 = 0,0000045 saniye / birlik.
-- Çok yüksek hızlarda tarayıcı her mikro saniyede ekran çizmez. Geçen zaman içinde tamamlanan birlik sayısı matematiksel olarak hesaplanıp orduya eklenir.
-- Bu nedenle 100.000 veya daha yüksek eğitim kuyrukları tarayıcıyı zorlamadan doğru hızda tamamlanabilir.
-- Kışla / Ahır seviyesi yükseldikçe eğitim süresi azalır.
-- v0.6'dan kalan aktif eğitim kuyruğu v0.7 hız modeline otomatik geçirilir.
+## Görsel yenileme
+- Köy merkezi, kaynak alanları, üst kaynak çubuğu, navigasyon ve paneller klasik ortaçağ strateji oyunu hissine yaklaştırıldı.
+- Tasarım FTL WAR'a özgüdür; başka bir oyunun görsel dosyaları kullanılmamıştır.
+- Köy merkezi daha arazisel görünür; bina yuvaları köy üzerinde konumlanır.
+- Kaynak alanları artık köy çevresi hissi veren yeşil arazi üzerinde gösterilir.
+- Harita ve pencereler parşömen/ahşap temaya geçirildi.
 
-## v0.7 savunma ve rapor geliştirmeleri
-- Test rakiplerinin gerçek birlik dağılımı vardır:
-  - Muhafız
-  - Mızraklı
-  - Süvari
-- Rakibin savunma gücü kalan askerlerine göre yeniden hesaplanır.
-- Rakip asker kayıpları kalıcıdır ve sonraki saldırılara yansır.
-- Saldırı ekranında hedefin mevcut savunma birlikleri ve tahmini savunma gücü gösterilir.
-- Yeni savaş raporlarında savunan taraf için:
-  - Başlangıç asker sayısı
-  - Kayıp asker sayısı
-  - Kalan asker sayısı
-- Saldıran taraf için katılan / kayıp / kalan birlik detayları korunur.
-- Odun, Kil, Demir ve Tahıl ganimetleri ayrı ayrı gösterilmeye devam eder.
-- Sağ taraftaki saatlik hammadde üretim paneli korunur.
+## Ekonomi kuralı
+- Sunucu hızı: x10.000.000
+- Maliyet sistemi: 1x
+- Bina kurma ve yükseltme maliyetleri x10.000.000 ile çarpılmaz.
+- Kaynak alanı yükseltme maliyetleri 1x ekonomiye göre düşük tabandan başlayıp seviyeye göre artar.
+- Asker eğitim maliyetleri 1x ekonomiye göre yeniden dengelendi.
+- Asker eğitim süreleri ve bina süreleri sunucu hızından yararlanmaya devam eder.
+- Yeni hesap başlangıç hammaddesi: 10.000 / 10.000 / 10.000 / 10.000.
+- Kaynak üretimi mevcut prototip kuralındaki gibi x10.000.000 hızda devam eder.
 
-## Sunucu kuralları
-- Genel hız: x10.000.000
-- Merkez köy kaynak alanları: maksimum 30
-- Diğer köyler: maksimum 20
-- Dünya Harikası: 1x
+## Önceki sistemler korunuyor
+- Kışla/Ahır seviyesine bağlı x10.000.000 asker eğitim süresi.
+- Çok yüksek eğitim hızında geçen süreye göre toplu matematiksel tamamlama.
+- Kalıcı rakip asker kayıpları.
+- Saldıran/savunan başlangıç-kayıp-kalan savaş raporları.
+- Ayrı odun/kil/demir/tahıl ganimetleri.
+- Saatlik üretim paneli.
 
-## Önemli
-Bu sürüm GitHub Pages üzerinde çalışan tarayıcı prototipidir. Gerçek çok oyunculu dünya için sonraki aşamalarda backend ve veritabanı gerekir.
+## Not
+Bu sürüm görsel dönüşümün ilk aşamasıdır. Sonraki sürümde gerçek bina çizimleri/ikon setleri, daha ayrıntılı köy arazisi ve kaynak alanı görselleri eklenebilir.
