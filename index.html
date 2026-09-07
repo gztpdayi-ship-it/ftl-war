@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FTL WAR v0.8</title>
+<title>FTL WAR v0.9</title>
 <style>
 :root{
   --bg:#0b110c;--panel:#211e19;--panel2:#2b271f;--line:#67512c;--gold:#f1bd4e;--gold2:#a87328;
@@ -38,7 +38,7 @@ button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
 @media(max-width:1100px){.layout{grid-template-columns:220px 1fr}.rightbar{grid-column:1/-1;position:static;display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.rightbar h3{grid-column:1/-1}}@media(max-width:950px){.layout{grid-template-columns:1fr}.side{display:none}.rightbar{grid-template-columns:repeat(4,1fr)}.fields{grid-template-columns:repeat(4,1fr)}.resources{display:none}.cards{grid-template-columns:repeat(2,1fr)}.map{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:650px){.rightbar{grid-template-columns:repeat(2,1fr)}.loot-grid{grid-template-columns:repeat(2,1fr)}.fields{grid-template-columns:repeat(3,1fr)}.stats,.army-summary,.cards{grid-template-columns:1fr}.map{grid-template-columns:repeat(3,1fr)}.slot{width:96px;height:78px}.village-scene{min-height:680px}}
 
-/* ===== FTL WAR v0.8 - klasik köy strateji görünümü ===== */
+/* ===== FTL WAR v0.9 - klasik köy strateji görünümü ===== */
 body{
   background:
     radial-gradient(circle at 50% -15%,rgba(232,205,142,.22),transparent 34%),
@@ -195,6 +195,202 @@ body{
   background:#efe0b7;border:1px solid #8b6837;color:#5d3216;font-weight:800;font-size:12px
 }
 
+
+/* ===== FTL WAR v0.9 - referanslardan esinlenen özgün klasik strateji arayüzü ===== */
+:root{
+  --wood:#6b3d1e; --wood2:#3b2112; --parch:#f4e3b7; --parch2:#d6b676;
+  --green:#5d8d2f; --green2:#315a20; --gold:#d2a32e; --ink:#3a220f;
+}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    linear-gradient(rgba(95,134,67,.08),rgba(43,69,34,.16)),
+    radial-gradient(ellipse at 50% 18%,#b9d7e9 0 18%,transparent 19%),
+    linear-gradient(#a9c7db 0 20%,#8eb36d 21% 62%,#4f6f37 63% 100%);
+  background-attachment:fixed;
+}
+.topbar{
+  position:sticky; top:0; z-index:80;
+  min-height:86px;
+  padding:0 18px;
+  background:linear-gradient(#8c562d 0 8px,#f3dfac 9px 74px,#704020 75px);
+  border-bottom:1px solid #4c2b16;
+  box-shadow:0 2px 10px rgba(0,0,0,.45);
+}
+.topbar-inner{
+  max-width:1120px;margin:auto;display:flex;align-items:center;gap:12px;min-height:82px
+}
+.logo{min-width:260px}
+.brand{
+  font-family:Georgia,serif;font-size:28px;font-weight:900;color:#7c3517;
+  text-shadow:0 1px #fff1c8,0 2px 0 #5a2814
+}
+.speed,.classic-rule{
+  display:inline-block;margin-top:2px;margin-right:5px;padding:3px 7px;
+  border:1px solid #9a7138;border-radius:4px;background:#fff0c3;color:#654118;font-size:11px;font-weight:900
+}
+.resources{
+  margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end
+}
+.res{
+  min-width:104px;padding:5px 7px;background:linear-gradient(#fff8df,#ddc28a);
+  border:1px solid #7b5d31;border-radius:4px;box-shadow:inset 0 1px #fff,0 2px 3px rgba(0,0,0,.22);
+  color:#3d2a13;font-weight:800
+}
+.wrap{
+  max-width:1120px;margin:0 auto;display:grid;grid-template-columns:250px minmax(0,1fr) 190px;gap:12px;padding:12px
+}
+.nav{
+  grid-column:1/-1;display:flex;justify-content:center;gap:11px;padding:4px 10px;margin-top:-12px;
+  background:transparent;border:none;box-shadow:none
+}
+.nav .btn{
+  width:66px;height:66px;border-radius:50%;padding:0;
+  border:4px solid #d8d8d1;background:radial-gradient(circle at 35% 30%,#fffde8,#b8b6a7);
+  box-shadow:0 2px 5px rgba(0,0,0,.45),inset 0 0 0 2px #7a7567;
+  color:#4b351f;font-size:0;position:relative
+}
+.nav .btn:before{font-size:30px;line-height:58px}
+.nav .btn:nth-child(1):before{content:"🌾"}
+.nav .btn:nth-child(2):before{content:"🏘️"}
+.nav .btn:nth-child(3):before{content:"🗺️"}
+.nav .btn:nth-child(4):before{content:"⚔️"}
+.nav .btn:nth-child(5):before{content:"🚩"}
+.nav .btn:nth-child(6):before{content:"📜"}
+.nav .btn:nth-child(7):before{content:"✉️"}
+.nav .btn:nth-child(8):before{content:"🚪"}
+.nav .btn:hover,.nav .btn.active{outline:3px solid #8ab52d;transform:translateY(-2px)}
+.side,.rightbar,.main{
+  background:transparent;border:none;box-shadow:none;color:var(--ink)
+}
+.side{
+  display:flex;flex-direction:column;gap:12px
+}
+.player,.side .notice,.side .card,.rightbar .card,.rightbar .prod-mini{
+  position:relative;background:linear-gradient(#fff3c9,#e0bf80);
+  border:2px solid #5b3a22;border-radius:7px;padding:14px 12px;
+  box-shadow:0 3px 8px rgba(0,0,0,.32),inset 0 0 0 2px rgba(255,255,255,.38)
+}
+.player:before,.side .card:before,.rightbar .card:before{
+  content:"";position:absolute;left:-6px;right:-6px;top:-5px;height:10px;
+  border-radius:8px;background:linear-gradient(#8f4c28,#4c2516);border:1px solid #38190e
+}
+.player strong{font-family:Georgia,serif;color:#6d2f15}
+.main{
+  min-height:650px
+}
+.heading{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;margin-bottom:10px;background:linear-gradient(#fff6d9,#dfc18a);
+  border:1px solid #896233;border-radius:6px;box-shadow:0 2px 5px rgba(0,0,0,.25)
+}
+.heading h2{margin:0;color:#4d2c16;font-family:Georgia,serif}
+.badge{background:#8c3017;color:#ffe8b0;border:0;border-radius:14px;padding:5px 9px}
+.notice{
+  background:rgba(255,246,219,.92);border:1px solid #b18a4d;color:#65431b;border-radius:5px;padding:8px 10px;margin-bottom:10px
+}
+
+/* Kaynak arazisi: büyük çevresel halka */
+.fields{
+  position:relative;display:block;min-height:610px;padding:0;border:0;border-radius:0;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(177,190,111,.95) 0 15%,transparent 15.5%),
+    radial-gradient(ellipse at 50% 52%,transparent 0 24%,rgba(50,90,35,.9) 24.5% 32%,transparent 33%),
+    radial-gradient(circle at 19% 19%,#3f6e34 0 5%,transparent 5.5%),
+    radial-gradient(circle at 83% 21%,#426e34 0 7%,transparent 7.5%),
+    radial-gradient(circle at 16% 75%,#49733a 0 7%,transparent 7.5%),
+    radial-gradient(circle at 87% 74%,#4a763d 0 6%,transparent 6.5%),
+    linear-gradient(172deg,transparent 0 52%,rgba(73,122,155,.72) 53% 56%,transparent 57%),
+    linear-gradient(#9bc66c,#70954e 65%,#536f3c);
+  border:1px solid #55733b;box-shadow:inset 0 0 35px rgba(30,50,20,.45)
+}
+.fields:after{
+  content:"FTL WAR";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:145px;height:145px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#d6bc6d,#8ba14c 60%,#476d34);border:5px solid rgba(83,88,38,.72);
+  font-family:Georgia,serif;font-size:19px;font-weight:900;color:#64351b;text-shadow:0 1px #f4e6ad;
+  box-shadow:0 6px 10px rgba(0,0,0,.3)
+}
+.field{
+  position:absolute;width:105px;height:86px;min-height:0;border-radius:46% 46% 38% 38%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:2px solid #665123;box-shadow:0 5px 8px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.3);
+  font-size:11px;z-index:2
+}
+.field.wood{background:radial-gradient(circle at 30% 25%,#7fa957,#36622f)}
+.field.clay{background:radial-gradient(circle at 30% 25%,#b96b49,#6f3925)}
+.field.iron{background:radial-gradient(circle at 30% 25%,#999a92,#5f625c)}
+.field.crop{background:radial-gradient(circle at 30% 25%,#f3cf65,#b58a24)}
+.field .icon{font-size:23px}.field .name{font-weight:900}.field strong{font-size:12px}
+.field small{display:none}.field button{
+  position:absolute;right:-5px;top:-5px;width:25px;height:25px;border-radius:50%;padding:0;font-size:0;
+  background:#74a821;border:2px solid #fff7ce;color:white
+}
+.field button:after{content:"+";font-size:17px;font-weight:900}
+.field:nth-child(1){left:42%;top:4%}.field:nth-child(2){left:58%;top:8%}.field:nth-child(3){left:72%;top:18%}
+.field:nth-child(4){left:78%;top:34%}.field:nth-child(5){left:76%;top:55%}.field:nth-child(6){left:62%;top:72%}
+.field:nth-child(7){left:47%;top:78%}.field:nth-child(8){left:30%;top:72%}.field:nth-child(9){left:15%;top:58%}
+.field:nth-child(10){left:9%;top:39%}.field:nth-child(11){left:12%;top:21%}.field:nth-child(12){left:25%;top:9%}
+.field:nth-child(13){left:35%;top:25%}.field:nth-child(14){left:59%;top:27%}.field:nth-child(15){left:65%;top:48%}
+.field:nth-child(16){left:52%;top:62%}.field:nth-child(17){left:31%;top:59%}.field:nth-child(18){left:24%;top:37%}
+
+/* Köy merkezi */
+.village-scene{
+  position:relative;min-height:610px;overflow:hidden;border:1px solid #55743c;border-radius:0;
+  background:
+    radial-gradient(ellipse at 50% 48%,#b2d875 0 43%,transparent 43.5%),
+    radial-gradient(ellipse at 50% 48%,#5f9cc2 0 50%,#4b82a4 52%,transparent 53%),
+    linear-gradient(#9bc56f,#678c4d);
+  box-shadow:inset 0 0 40px rgba(33,58,27,.45)
+}
+.village-scene:before{
+  content:"";position:absolute;inset:8% 9%;border-radius:48%;
+  background:
+    linear-gradient(27deg,transparent 47%,rgba(220,201,153,.9) 48% 51%,transparent 52%),
+    linear-gradient(-31deg,transparent 47%,rgba(220,201,153,.8) 48% 51%,transparent 52%),
+    radial-gradient(circle at 50% 50%,rgba(216,197,146,.8) 0 18%,transparent 19%);
+  pointer-events:none
+}
+.slot{
+  width:98px;height:78px;border-radius:48% 48% 35% 35%;padding:4px;
+  background:linear-gradient(#e4bf64,#a96e2b);border:2px solid #6d421e;color:#3c240f;
+  box-shadow:0 5px 7px rgba(0,0,0,.34),inset 0 1px rgba(255,255,255,.4)
+}
+.slot.empty{background:rgba(171,198,108,.45);border:2px dashed rgba(86,108,55,.75)}
+.slot .sicon{font-size:28px}.slot .sname{font-size:11px}.slot .slvl{font-size:10px;color:#6f1f0f}
+
+/* Harita */
+.map{
+  position:relative;display:grid;grid-template-columns:repeat(9,1fr);gap:1px;
+  background:#7ca85b;border:8px solid #fff2cc;border-radius:6px;padding:4px;
+  box-shadow:0 3px 10px rgba(0,0,0,.35)
+}
+.tile{
+  min-height:66px;border:1px solid rgba(82,120,60,.45);border-radius:0;
+  background:
+    radial-gradient(circle at 65% 30%,rgba(67,115,45,.8) 0 5%,transparent 6%),
+    linear-gradient(#cbe8a9,#b6dd97);
+  color:#3a301d
+}
+.tile.enemy{background:radial-gradient(circle,#bd8b66 0 34%,#a8d18c 36%)}
+.tile.me{background:radial-gradient(circle,#d5b674 0 34%,#a8d18c 36%);outline:2px solid #d58a22}
+.tile.oasis{background:radial-gradient(circle,#74b69c 0 34%,#a8d18c 36%)}
+
+/* Rapor */
+.report{
+  background:linear-gradient(#fff2c9,#e8cf9a);border:1px solid #9b763e;border-radius:6px;padding:12px;margin-bottom:10px
+}
+.battle-table th,.battle-table td{border-color:#a58145;color:#3d290f}
+.loot-box{background:#e8cb91;border-color:#9d783f}
+.loot-box strong{color:#802b14}
+@media(max-width:980px){
+ .wrap{grid-template-columns:1fr}
+ .nav{grid-column:1}
+ .side,.rightbar{display:none}
+ .topbar-inner{flex-wrap:wrap}.resources{margin-left:0}
+}
+
 </style>
 </head>
 <body>
@@ -244,7 +440,7 @@ body{
       </section>
 
       <section id="panelCenter" class="hidden">
-        <div class="heading"><h2>🏰 Köy Merkezi</h2><span class="badge">Klasik Görünüm • v0.8</span></div>
+        <div class="heading"><h2>🏰 Köy Merkezi</h2><span class="badge">Klasik Görünüm • v0.9</span></div>
         <div class="notice"><b>FTL WAR klasik köy görünümü:</b> bina yuvalarına tıklayarak kurulum ve geliştirme yapabilirsin. Süreler x10.000.000, maliyetler normal 1x ekonomiye göre hesaplanır.</div>
         <div class="village-scene" id="villageScene"></div>
         <div class="queue"><h3>🏗 İnşaat Kuyruğu</h3><div id="queueBox">Kuyruk boş.</div></div>
@@ -280,7 +476,7 @@ body{
       </section>
     </main>
     <aside class="rightbar">
-      <h3>📈 Saatlik Üretim</h3>
+      <h3>📈 📈 Saatlik Üretim</h3>
       <div class="prod-mini"><small>🌲 Odun / saat</small><strong id="woodProdRight">0</strong></div>
       <div class="prod-mini"><small>🧱 Kil / saat</small><strong id="clayProdRight">0</strong></div>
       <div class="prod-mini"><small>⛓ Demir / saat</small><strong id="ironProdRight">0</strong></div>
@@ -312,7 +508,7 @@ body{
 
 <div id="authGate" class="modal hidden">
   <div class="modalbox" style="max-width:760px">
-    <div class="heading"><h2>FTL WAR v0.8</h2><span class="badge">Yeni Komutan</span></div>
+    <div class="heading"><h2>FTL WAR v0.9</h2><span class="badge">Yeni Komutan</span></div>
     <div class="notice">Eski v0.4 hesabın varsa aynı tarayıcıda korunur.</div>
     <div class="cards" style="grid-template-columns:1fr 1fr">
       <div class="card"><h4>Oyuncu adı</h4><input id="newName" style="width:100%;padding:10px;background:#111510;color:#fff;border:1px solid #5f523d;border-radius:5px"></div>
@@ -391,6 +587,7 @@ function migrate(){
    }
  } else currentUser.trainQueue=[];
  currentUser.reports=currentUser.reports||[];currentUser.coord=currentUser.coord||randomCoord();currentUser.movements=currentUser.movements||[];currentUser.enemyArmies=currentUser.enemyArmies||{};
+ if(currentUser.combatVersion!==9){currentUser.combatVersion=9;}
  if(currentUser.economyVersion!==8){
    currentUser.economyVersion=8;
    currentUser.resources=currentUser.resources||{wood:10000,clay:10000,iron:10000,crop:10000,gold:500};
@@ -528,12 +725,30 @@ function resolveMovements(){
  const now=Date.now();for(const m of currentUser.movements){
    if(m.phase==="outgoing" && now>=m.arrival){
      if(m.type==="support"){m.phase="returning";m.returnAt=now+m.travel*1000;m.result="Destek ulaştı";continue}
-     const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,enemy=getEnemyArmy(m.target),defStart={...enemy},defCount=enemyTotal(defStart),defPower=enemyDefensePower(defStart),win=atk>=defPower,lossRate=win?(m.type==="raid"?0.10:0.18):0.65;
+     const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,enemy=getEnemyArmy(m.target),defStart={...enemy},defCount=enemyTotal(defStart),defPower=Math.max(1,enemyDefensePower(defStart)),win=atk>=defPower;
+     const ratio=atk/defPower;
+     // v0.9: sabit kayıp kaldırıldı. Kayıp güç oranına göre hesaplanır.
+     // Ezici üstünlükte saldıran 0 kayba kadar düşebilir.
+     let lossRate;
+     if(win){
+       if(ratio>=1000) lossRate=0;
+       else if(ratio>=100) lossRate=0.0005;
+       else if(ratio>=20) lossRate=0.005;
+       else if(ratio>=10) lossRate=0.015;
+       else if(ratio>=5) lossRate=0.04;
+       else if(ratio>=3) lossRate=0.08;
+       else if(ratio>=2) lossRate=0.14;
+       else lossRate=Math.min(0.32,0.18+(2-ratio)*0.14);
+       if(m.type==="raid") lossRate*=0.70;
+     }else{
+       const reverse=defPower/Math.max(1,atk);
+       lossRate=Math.min(1,0.55+Math.min(0.45,(reverse-1)*0.15));
+     }
      m.returningUnits={};const attackerLosses={};for(const u of UNIT_DATA[currentUser.tribe]){const sent=m.units[u.id]||0;const survived=Math.max(0,Math.floor(sent*(1-lossRate)));m.returningUnits[u.id]=survived;attackerLosses[u.id]=sent-survived}
      const defLossRate=win?(m.type==="raid"?.72:.90):.22,defRemain={};for(const id of ["guard","spear","rider"]){defRemain[id]=Math.max(0,Math.floor((defStart[id]||0)*(1-defLossRate)));enemy[id]=defRemain[id]}
      const lootTotal=win?Math.floor(Math.max(1,defPower)*(m.type==="raid"?1200:900)):0;m.loot=splitLoot(lootTotal);m.lootTotal=lootTotal;m.result=win?"Zafer":"Yenilgi";
      m.phase="returning";m.returnAt=now+m.travel*1000;
-     currentUser.reports.unshift({time:new Date().toISOString(),mode:m.type,target:m.target,result:m.result,attack:Math.floor(atk),defense:defPower,loot:m.loot,lootTotal,sent:{...m.units},returned:{...m.returningUnits},attackerLosses,defenderStart:defStart,defenderReturned:defRemain})
+     currentUser.reports.unshift({time:new Date().toISOString(),mode:m.type,target:m.target,result:m.result,attack:Math.floor(atk),defense:defPower,powerRatio:ratio,loot:m.loot,lootTotal,sent:{...m.units},returned:{...m.returningUnits},attackerLosses,defenderStart:defStart,defenderReturned:defRemain})
    }else if(m.phase==="returning" && now>=m.returnAt){
      const units=m.returningUnits||m.units;for(const id in units)currentUser.army[id]=(currentUser.army[id]||0)+units[id];
      if(m.loot){if(typeof m.loot==="number"){currentUser.resources.wood+=m.loot;currentUser.resources.clay+=m.loot;currentUser.resources.iron+=m.loot;currentUser.resources.crop+=Math.floor(m.loot*.7)}else{for(const t of ["wood","clay","iron","crop"])currentUser.resources[t]+=m.loot[t]||0}}
@@ -546,7 +761,7 @@ function renderMovements(){const l=document.getElementById("movementList");docum
 function renderReports(){
  const l=document.getElementById("reportList");document.getElementById("reportBadge").textContent=currentUser.reports.length+" rapor";if(!currentUser.reports.length){l.innerHTML='<div class="notice">Henüz savaş raporu yok.</div>';return}
  const names={guard:"Muhafız",spear:"Mızraklı",rider:"Süvari"};
- l.innerHTML=currentUser.reports.map(r=>{const loot=typeof r.loot==="object"?r.loot:{wood:r.loot||0,clay:r.loot||0,iron:r.loot||0,crop:Math.floor((r.loot||0)*.7)};const total=r.lootTotal??Object.values(loot).reduce((a,b)=>a+(b||0),0);const units=UNIT_DATA[currentUser.tribe];const attRows=units.filter(u=>(r.sent?.[u.id]||0)>0).map(u=>{const sent=r.sent?.[u.id]||0,surv=r.returned?.[u.id]??sent,lost=r.attackerLosses?.[u.id]??Math.max(0,sent-surv);return `<tr><td>${u.icon} ${u.name}</td><td>${fmt(sent)}</td><td class="bad">${fmt(lost)}</td><td class="good">${fmt(surv)}</td></tr>`}).join("");const ds=r.defenderStart||{},dr=r.defenderReturned||{};const defRows=Object.keys(ds).map(id=>{const start=ds[id]||0,surv=dr[id]??start;return `<tr><td>🛡 ${names[id]||id}</td><td>${fmt(start)}</td><td class="bad">${fmt(Math.max(0,start-surv))}</td><td class="good">${fmt(surv)}</td></tr>`}).join("");return `<div class="report"><h4 class="${r.result==="Zafer"?"good":"bad"}">${r.result==="Zafer"?"🏆":"☠"} ${r.result} • ${r.target.village}</h4><small>${new Date(r.time).toLocaleString("tr-TR")} • ${({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[r.mode]||"Saldırı")}</small><p>Saldırı gücü: ${fmt(r.attack)} • Savunma gücü: ${fmt(r.defense)}</p><h4>⚔ Saldıran — Biz</h4><table class="battle-table"><tr><th>Birlik</th><th>Katılan</th><th>Kayıp</th><th>Kalan</th></tr>${attRows||'<tr><td colspan="4">Eski raporda birlik detayı yok.</td></tr>'}</table><h4>🛡 Savunan — Rakip</h4><table class="battle-table"><tr><th>Birlik</th><th>Başlangıç</th><th>Kayıp</th><th>Kalan</th></tr>${defRows||'<tr><td colspan="4">Eski raporda savunma birlik detayı yok.</td></tr>'}</table><h4>🎒 Ganimet</h4><div class="loot-grid"><div class="loot-box">🌲 Odun<strong>${fmt(loot.wood)}</strong></div><div class="loot-box">🧱 Kil<strong>${fmt(loot.clay)}</strong></div><div class="loot-box">⛓ Demir<strong>${fmt(loot.iron)}</strong></div><div class="loot-box">🌾 Tahıl<strong>${fmt(loot.crop)}</strong></div></div><p><b>Toplam Ganimet: ${fmt(total)}</b></p></div>`}).join("")
+ l.innerHTML=currentUser.reports.map(r=>{const loot=typeof r.loot==="object"?r.loot:{wood:r.loot||0,clay:r.loot||0,iron:r.loot||0,crop:Math.floor((r.loot||0)*.7)};const total=r.lootTotal??Object.values(loot).reduce((a,b)=>a+(b||0),0);const units=UNIT_DATA[currentUser.tribe];const attRows=units.filter(u=>(r.sent?.[u.id]||0)>0).map(u=>{const sent=r.sent?.[u.id]||0,surv=r.returned?.[u.id]??sent,lost=r.attackerLosses?.[u.id]??Math.max(0,sent-surv);return `<tr><td>${u.icon} ${u.name}</td><td>${fmt(sent)}</td><td class="bad">${fmt(lost)}</td><td class="good">${fmt(surv)}</td></tr>`}).join("");const ds=r.defenderStart||{},dr=r.defenderReturned||{};const defRows=Object.keys(ds).map(id=>{const start=ds[id]||0,surv=dr[id]??start;return `<tr><td>🛡 ${names[id]||id}</td><td>${fmt(start)}</td><td class="bad">${fmt(Math.max(0,start-surv))}</td><td class="good">${fmt(surv)}</td></tr>`}).join("");return `<div class="report"><h4 class="${r.result==="Zafer"?"good":"bad"}">${r.result==="Zafer"?"🏆":"☠"} ${r.result} • ${r.target.village}</h4><small>${new Date(r.time).toLocaleString("tr-TR")} • ${({attack:"Normal Saldırı",raid:"Yağma",support:"Destek"}[r.mode]||"Saldırı")}</small><p>Saldırı gücü: ${fmt(r.attack)} • Savunma gücü: ${fmt(r.defense)}${r.powerRatio?` • Güç oranı: ${r.powerRatio>=1000?"1000x+":r.powerRatio.toFixed(2)+"x"}`:""}</p><h4>⚔ Saldıran — Biz</h4><table class="battle-table"><tr><th>Birlik</th><th>Katılan</th><th>Kayıp</th><th>Kalan</th></tr>${attRows||'<tr><td colspan="4">Eski raporda birlik detayı yok.</td></tr>'}</table><h4>🛡 Savunan — Rakip</h4><table class="battle-table"><tr><th>Birlik</th><th>Başlangıç</th><th>Kayıp</th><th>Kalan</th></tr>${defRows||'<tr><td colspan="4">Eski raporda savunma birlik detayı yok.</td></tr>'}</table><h4>🎒 Ganimet</h4><div class="loot-grid"><div class="loot-box">🌲 Odun<strong>${fmt(loot.wood)}</strong></div><div class="loot-box">🧱 Kil<strong>${fmt(loot.clay)}</strong></div><div class="loot-box">⛓ Demir<strong>${fmt(loot.iron)}</strong></div><div class="loot-box">🌾 Tahıl<strong>${fmt(loot.crop)}</strong></div></div><p><b>Toplam Ganimet: ${fmt(total)}</b></p></div>`}).join("")
 }
 function showPanel(name){const m={fields:"panelFields",center:"panelCenter",army:"panelArmy",map:"panelMap",movements:"panelMovements",reports:"panelReports",messages:"panelMessages"};Object.values(m).forEach(id=>document.getElementById(id).classList.add("hidden"));document.getElementById(m[name]).classList.remove("hidden");if(name==="army")renderArmy();if(name==="map")renderMap();if(name==="movements")renderMovements();if(name==="reports")renderReports();if(name==="center")renderVillage()}
 function tick(){if(!currentUser)return;["wood","clay","iron","crop"].forEach(t=>currentUser.resources[t]+=production(t)/3600);processTraining();resolveMovements();["wood","clay","iron","crop"].forEach(t=>{const r=document.getElementById(t+"ProdRight");if(r)r.textContent=fmt(production(t))});renderBuildQueue();renderTrainQueue();renderMovements();updateTop();saveUser()}

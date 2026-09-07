@@ -1,31 +1,44 @@
-# FTL WAR v0.8
+# FTL WAR v0.9
 
-FTL WAR'ın klasik köy-strateji görünümüne geçiş sürümü.
+Bu sürüm iki ana konuya odaklanır: savaş kayıplarının düzeltilmesi ve klasik tarayıcı-strateji görünümüne daha büyük geçiş.
 
-## Görsel yenileme
-- Köy merkezi, kaynak alanları, üst kaynak çubuğu, navigasyon ve paneller klasik ortaçağ strateji oyunu hissine yaklaştırıldı.
-- Tasarım FTL WAR'a özgüdür; başka bir oyunun görsel dosyaları kullanılmamıştır.
-- Köy merkezi daha arazisel görünür; bina yuvaları köy üzerinde konumlanır.
-- Kaynak alanları artık köy çevresi hissi veren yeşil arazi üzerinde gösterilir.
-- Harita ve pencereler parşömen/ahşap temaya geçirildi.
+## Savaş motoru düzeltmesi
+- Kazanan taraf artık sabit %18 kayıp vermez.
+- Kayıplar saldırı gücü / savunma gücü oranından hesaplanır.
+- Ezici üstünlükte saldıran taraf 0 kayba kadar düşebilir.
+- Yakın güçlerde iki taraf da daha ciddi kayıp verir.
+- Yağma saldırılarında kazanan tarafın kaybı normal saldırıya göre daha düşüktür.
+- Savaş raporuna güç oranı bilgisi eklendi.
 
-## Ekonomi kuralı
-- Sunucu hızı: x10.000.000
-- Maliyet sistemi: 1x
-- Bina kurma ve yükseltme maliyetleri x10.000.000 ile çarpılmaz.
-- Kaynak alanı yükseltme maliyetleri 1x ekonomiye göre düşük tabandan başlayıp seviyeye göre artar.
-- Asker eğitim maliyetleri 1x ekonomiye göre yeniden dengelendi.
-- Asker eğitim süreleri ve bina süreleri sunucu hızından yararlanmaya devam eder.
-- Yeni hesap başlangıç hammaddesi: 10.000 / 10.000 / 10.000 / 10.000.
-- Kaynak üretimi mevcut prototip kuralındaki gibi x10.000.000 hızda devam eder.
+Örnek:
+- Saldırı gücü 154.184.100
+- Savunma gücü 90
+- Güç oranı 1.000x'in çok üzerindedir
+- Saldıran taraf kaybı 0 olur.
 
-## Önceki sistemler korunuyor
-- Kışla/Ahır seviyesine bağlı x10.000.000 asker eğitim süresi.
-- Çok yüksek eğitim hızında geçen süreye göre toplu matematiksel tamamlama.
-- Kalıcı rakip asker kayıpları.
-- Saldıran/savunan başlangıç-kayıp-kalan savaş raporları.
-- Ayrı odun/kil/demir/tahıl ganimetleri.
-- Saatlik üretim paneli.
+## Görsel dönüşüm
+Kullanıcının sağladığı ekran görüntülerindeki genel yerleşim mantığından esinlenilerek FTL WAR'a özgü bir arayüz hazırlandı:
+- Üstte büyük yuvarlak ana menü ikonları
+- Kompakt üst kaynak çubuğu
+- Sol tarafta parşömen/ahşap oyuncu panelleri
+- Büyük, çevresel kaynak arazisi
+- Ortasında yerleşim bulunan köy merkezi
+- Nehirli/yeşil köy görünümü
+- Büyük kareli dünya haritası
+- Parşömen tarzı savaş raporları
+- Sağ tarafta saatlik üretim özeti
 
-## Not
-Bu sürüm görsel dönüşümün ilk aşamasıdır. Sonraki sürümde gerçek bina çizimleri/ikon setleri, daha ayrıntılı köy arazisi ve kaynak alanı görselleri eklenebilir.
+Başka oyuna ait resim veya grafik dosyaları kullanılmamıştır; görünüm CSS ve FTL WAR öğeleriyle özgün olarak oluşturulmuştur.
+
+## Ekonomi
+- Genel hız: x10.000.000
+- Bina/asker/kaynak alanı maliyetleri: 1x
+- Süreler: x10.000.000 hız mantığı
+- Dünya Harikası: 1x
+
+## Korunan sistemler
+- Kışla/Ahır seviyesine bağlı eğitim süresi
+- Çok yüksek hızda matematiksel eğitim tamamlama
+- Kalıcı rakip asker kayıpları
+- Saldıran ve savunan detaylı raporları
+- Ayrı odun/kil/demir/tahıl ganimetleri
