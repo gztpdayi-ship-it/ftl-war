@@ -1,21 +1,28 @@
-# FTL WAR v0.10.2
+# FTL WAR v11.1
 
-Kaynak alanı görsel düzenleme sürümü.
+Bu paket GitHub'da mevcut dosyaların ÜZERİNE yazılması için hazırlandı.
 
-## v0.10.2
-- Yeni FTL WAR kaynak dünyası oyuna eklendi.
-- Tam konsept ekranı doğrudan arka plan yapılmadı; yalnızca merkezdeki oyun arazisi kullanıldı. Böylece gerçek HTML menüler ve kaynak değerleri çalışmaya devam eder.
-- 18 gerçek kaynak alanı için dinamik seviye rozetleri yeniden konumlandırıldı.
-- Rozetlerde yalnızca seviye numarası görünür.
-- Seviye rozetlerinin birbirinin üzerine gelmemesi için ayrı koordinatlar tanımlandı.
-- Rozetler tıklanabilir ve mevcut kaynak geliştirme sistemiyle bağlantılıdır.
-- Sağdaki Saatlik Üretim paneli korunur.
-- Sunucu hızı x10.000.000, maliyetler 1x ve v0.9 güç-oranlı savaş sistemi korunur.
+## Çok önemli
+Bu sürümde yeni dosya adı eklemek yerine GitHub'da zaten bulunan adlar kullanılır:
 
-## GitHub ana dizini
 - index.html
 - README.md
 - ftl-war-resource-world-v0102.jpg
 - ftl-war-v0102-reference.jpg
 
-Dört dosyayı aynı dizine yükleyin.
+Bu 4 dosyayı birlikte yükleyip "Replace files" / üzerine yazma işlemini tamamlayın.
+
+## Neden?
+Önceki v11 commit'i yapılmış olsa da GitHub ekranında `index.html` hâlâ v0.10.2 olarak görünüyordu.
+Bu yüzden yayınlanan sayfa eski CSS ve eski görsel düzenini göstermeye devam etti.
+
+## v11.1
+- Tam ekran masaüstü düzeni
+- Sol oyuncu/köy paneli
+- Ortada büyük oyun dünyası
+- Sağ saatlik üretim paneli
+- Üst sabit menü
+- 18 etkileşimli kaynak rozeti
+- x10.000.000 hız
+- 1x maliyet
+- Güç oranına dayalı savaş kaybı sistemi
