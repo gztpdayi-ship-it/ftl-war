@@ -1,18 +1,21 @@
-# FTL WAR v0.10.1
+# FTL WAR v0.10.2
 
-v0.10 görsel yükleme düzeltmesi.
+Kaynak alanı görsel düzenleme sürümü.
 
-## Değişiklikler
-- Görsel dosyaları artık `assets` klasörü gerektirmez.
-- `index.html`, görselleri doğrudan GitHub deposunun ana dizininden okur.
-- Kaynak alanı seviye rozetlerinde `Seviye 10` yerine yalnızca `10` gösterilir.
-- v0.10 oyun sistemleri ve savaş motoru korunur.
+## v0.10.2
+- Yeni FTL WAR kaynak dünyası oyuna eklendi.
+- Tam konsept ekranı doğrudan arka plan yapılmadı; yalnızca merkezdeki oyun arazisi kullanıldı. Böylece gerçek HTML menüler ve kaynak değerleri çalışmaya devam eder.
+- 18 gerçek kaynak alanı için dinamik seviye rozetleri yeniden konumlandırıldı.
+- Rozetlerde yalnızca seviye numarası görünür.
+- Seviye rozetlerinin birbirinin üzerine gelmemesi için ayrı koordinatlar tanımlandı.
+- Rozetler tıklanabilir ve mevcut kaynak geliştirme sistemiyle bağlantılıdır.
+- Sağdaki Saatlik Üretim paneli korunur.
+- Sunucu hızı x10.000.000, maliyetler 1x ve v0.9 güç-oranlı savaş sistemi korunur.
 
-## GitHub ana dizininde bulunması gereken dosyalar
+## GitHub ana dizini
+- index.html
+- README.md
+- ftl-war-resource-world-v0102.jpg
+- ftl-war-v0102-reference.jpg
 
-- `index.html`
-- `README.md`
-- `ftl-war-resource-world.jpg`
-- `ftl-war-ui-reference.jpg`
-
-Bu dört dosyayı aynı dizine yüklemek yeterlidir.
+Dört dosyayı aynı dizine yükleyin.

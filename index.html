@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FTL WAR v0.10.1.1</title>
+<title>FTL WAR v0.10.2.1</title>
 <style>
 :root{
   --bg:#0b110c;--panel:#211e19;--panel2:#2b271f;--line:#67512c;--gold:#f1bd4e;--gold2:#a87328;
@@ -38,7 +38,7 @@ button,input{font:inherit}.hidden{display:none!important}button{cursor:pointer}
 @media(max-width:1100px){.layout{grid-template-columns:220px 1fr}.rightbar{grid-column:1/-1;position:static;display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.rightbar h3{grid-column:1/-1}}@media(max-width:950px){.layout{grid-template-columns:1fr}.side{display:none}.rightbar{grid-template-columns:repeat(4,1fr)}.fields{grid-template-columns:repeat(4,1fr)}.resources{display:none}.cards{grid-template-columns:repeat(2,1fr)}.map{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:650px){.rightbar{grid-template-columns:repeat(2,1fr)}.loot-grid{grid-template-columns:repeat(2,1fr)}.fields{grid-template-columns:repeat(3,1fr)}.stats,.army-summary,.cards{grid-template-columns:1fr}.map{grid-template-columns:repeat(3,1fr)}.slot{width:96px;height:78px}.village-scene{min-height:680px}}
 
-/* ===== FTL WAR v0.10.1.1 - klasik köy strateji görünümü ===== */
+/* ===== FTL WAR v0.10.2.1 - klasik köy strateji görünümü ===== */
 body{
   background:
     radial-gradient(circle at 50% -15%,rgba(232,205,142,.22),transparent 34%),
@@ -196,7 +196,7 @@ body{
 }
 
 
-/* ===== FTL WAR v0.10.1.1 - referanslardan esinlenen özgün klasik strateji arayüzü ===== */
+/* ===== FTL WAR v0.10.2.1 - referanslardan esinlenen özgün klasik strateji arayüzü ===== */
 :root{
   --wood:#6b3d1e; --wood2:#3b2112; --parch:#f4e3b7; --parch2:#d6b676;
   --green:#5d8d2f; --green2:#315a20; --gold:#d2a32e; --ink:#3a220f;
@@ -392,7 +392,7 @@ body{
 }
 
 
-/* ===== FTL WAR v0.10.1.1 - resimli kaynak dünyası ===== */
+/* ===== FTL WAR v0.10.2.1 - resimli kaynak dünyası ===== */
 .fields{
   position:relative !important;
   display:block !important;
@@ -400,7 +400,7 @@ body{
   overflow:hidden !important;
   border:4px solid #5c351c !important;
   border-radius:10px !important;
-  background-image:linear-gradient(rgba(0,0,0,.02),rgba(0,0,0,.02)),url("ftl-war-resource-world.jpg") !important;
+  background-image:linear-gradient(rgba(0,0,0,.02),rgba(0,0,0,.02)),url("ftl-war-resource-world-v0102.jpg") !important;
   background-size:cover !important;
   background-position:center center !important;
   box-shadow:0 7px 18px rgba(0,0,0,.42),inset 0 0 22px rgba(33,20,8,.28) !important;
@@ -425,13 +425,53 @@ body{
 .field:nth-child(13){left:84%;top:70%}.field:nth-child(14){left:35%;top:76%}.field:nth-child(15){left:61%;top:76%}
 .field:nth-child(16){left:48%;top:86%}.field:nth-child(17){left:7%;top:53%}.field:nth-child(18){left:89%;top:57%}
 .village-scene{
-  background-image:url("ftl-war-resource-world.jpg") !important;
+  background-image:url("ftl-war-resource-world-v0102.jpg") !important;
   background-size:cover !important;background-position:center !important
 }
 .v10-art-note{
   margin:0 0 8px;padding:6px 9px;border-radius:5px;background:rgba(255,244,210,.94);
   border:1px solid #9a743b;color:#5e3b18;font-size:12px;font-weight:700
 }
+
+
+/* ===== FTL WAR v0.10.2 =====
+   Yeni FTL WAR kaynak dünyası + çakışmasız dinamik seviye sistemi */
+.fields{
+  min-height:720px !important;
+  background-image:url("ftl-war-resource-world-v0102.jpg") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+}
+.field{
+  width:54px !important;height:54px !important;min-height:54px !important;
+  background:radial-gradient(circle at 38% 30%,#fff,#edf5f8 68%,#c8dbe5) !important;
+  border:3px solid #247aaa !important;
+  box-shadow:0 2px 6px rgba(0,0,0,.55),inset 0 0 0 2px white !important;
+}
+.field strong{font-size:17px !important}
+
+/* 18 ayrı kaynak noktası. Her biri diğerinden güvenli mesafede. */
+.field:nth-child(1){left:48%;top:9%}
+.field:nth-child(2){left:23%;top:15%}
+.field:nth-child(3){left:73%;top:15%}
+.field:nth-child(4){left:52%;top:24%}
+.field:nth-child(5){left:31%;top:31%}
+.field:nth-child(6){left:70%;top:32%}
+.field:nth-child(7){left:12%;top:36%}
+.field:nth-child(8){left:86%;top:38%}
+.field:nth-child(9){left:25%;top:51%}
+.field:nth-child(10){left:76%;top:51%}
+.field:nth-child(11){left:48%;top:61%}
+.field:nth-child(12){left:15%;top:66%}
+.field:nth-child(13){left:84%;top:67%}
+.field:nth-child(14){left:34%;top:73%}
+.field:nth-child(15){left:65%;top:74%}
+.field:nth-child(16){left:49%;top:86%}
+.field:nth-child(17){left:6%;top:53%}
+.field:nth-child(18){left:91%;top:55%}
+
+/* Alttaki ikinci üretim özetini gizle; sağdaki Saatlik Üretim paneli kalır. */
+#fieldsPanel .stats, #fieldsPanel .production-summary{display:none !important}
 
 </style>
 </head>
@@ -482,7 +522,7 @@ body{
       </section>
 
       <section id="panelCenter" class="hidden">
-        <div class="heading"><h2>🏰 Köy Merkezi</h2><span class="badge">Resimli Dünya • v0.10.1</span></div>
+        <div class="heading"><h2>🏰 Köy Merkezi</h2><span class="badge">Resimli Dünya • v0.10.2</span></div>
         <div class="notice"><b>FTL WAR klasik köy görünümü:</b> bina yuvalarına tıklayarak kurulum ve geliştirme yapabilirsin. Süreler x10.000.000, maliyetler normal 1x ekonomiye göre hesaplanır.</div>
         <div class="village-scene" id="villageScene"></div>
         <div class="queue"><h3>🏗 İnşaat Kuyruğu</h3><div id="queueBox">Kuyruk boş.</div></div>
@@ -550,7 +590,7 @@ body{
 
 <div id="authGate" class="modal hidden">
   <div class="modalbox" style="max-width:760px">
-    <div class="heading"><h2>FTL WAR v0.10.1.1</h2><span class="badge">Yeni Komutan</span></div>
+    <div class="heading"><h2>FTL WAR v0.10.2.1</h2><span class="badge">Yeni Komutan</span></div>
     <div class="notice">Eski v0.4 hesabın varsa aynı tarayıcıda korunur.</div>
     <div class="cards" style="grid-template-columns:1fr 1fr">
       <div class="card"><h4>Oyuncu adı</h4><input id="newName" style="width:100%;padding:10px;background:#111510;color:#fff;border:1px solid #5f523d;border-radius:5px"></div>
@@ -769,7 +809,7 @@ function resolveMovements(){
      if(m.type==="support"){m.phase="returning";m.returnAt=now+m.travel*1000;m.result="Destek ulaştı";continue}
      const modeFactor=m.type==="raid"?0.82:1,atk=m.totalAtk*modeFactor,enemy=getEnemyArmy(m.target),defStart={...enemy},defCount=enemyTotal(defStart),defPower=Math.max(1,enemyDefensePower(defStart)),win=atk>=defPower;
      const ratio=atk/defPower;
-     // v0.10.1: sabit kayıp kaldırıldı. Kayıp güç oranına göre hesaplanır.
+     // v0.10.2: sabit kayıp kaldırıldı. Kayıp güç oranına göre hesaplanır.
      // Ezici üstünlükte saldıran 0 kayba kadar düşebilir.
      let lossRate;
      if(win){
